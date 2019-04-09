@@ -1,22 +1,3 @@
-export const FOOTER_ITEMS = [
-    {
-        key: "home",
-        type: "home",
-    },
-    {
-        key: "profile",
-        type: "profile",
-    },
-    
-    {
-        key: "plus",
-        type: "plus",
-    },
-    {
-        key: "more",
-        type: "more",
-    },
-]
 export const MENU_TEXTS = {
     DARK: "dark",
     HORIZONTAL: "horizontal",
@@ -27,10 +8,39 @@ export const STYLES = {
         position: "fixed",
         bottom: 0,
         width: "100%",
+        display: "flex",
+        height: "50px",
+        alignItems: "center",
     },
     
     MAIN_NAV: {
         width: "100%",
-        position: "center",
+        display: "flex",
+        justifyContent: "space-around",
+        alignItems: "center",
+        width: "100%",
     },
 };
+
+export const FOOTER_MENU = [
+    {
+        key: "home",
+        path: "/",
+        type: "home",
+    },
+    {
+        key: "profile",
+        path: "/",
+        type: "profile",
+    },    
+    {
+        key: "plus",
+        path: "/",
+        type: "plus",
+    },
+    {
+        key: "more",
+        path: "/",
+        type: "more",
+    },
+]

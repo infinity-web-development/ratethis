@@ -1,7 +1,8 @@
 import React from 'react';
 import { Icon, Menu } from 'antd';
+import Link from 'next/link'
 
-import { FOOTER_ITEMS, MENU_TEXTS, STYLES } from './constants';
+import { FOOTER_MENU, MENU_TEXTS, STYLES } from './constants';
 
 const {CONTAINER, MAIN_NAV} = STYLES
 const { DARK, HORIZONTAL } = MENU_TEXTS
@@ -16,11 +17,14 @@ class AppFooter extends React.Component {
                     mode={HORIZONTAL}
                     theme={DARK}
                     style={MAIN_NAV}
-                    grid={{ gutter: 12, lg: 4, md: 4, sm: 2, xs: 1, xxl: 3 }}
                 >
                     {
-                        FOOTER_ITEMS.map(({ key, type }) => (
-                            <Item key={key}><Icon type={type} /></Item>
+                        FOOTER_MENU.map(({ key, path, type }) => (
+                            <Item>
+                                <Link href={path} key={key}>
+                                    <Icon type={type} />
+                                </Link>
+                            </Item>
                         ))
                     }
                 </Menu>
