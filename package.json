@@ -24,7 +24,10 @@
     "antd": "^3.15.1",
     "next": "^8.0.3",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react-dom": "^16.8.5",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-saga": "^0.16.2"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.11.0",
