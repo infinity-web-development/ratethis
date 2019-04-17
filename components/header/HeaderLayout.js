@@ -1,4 +1,4 @@
-import AppHeader from './Header'
+import AppHeader from './AppHeader'
 
 const HeaderLayout = props => (
   <div >
