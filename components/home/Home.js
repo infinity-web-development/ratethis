@@ -8,32 +8,48 @@ const { INNER, MORE, UPLOAD, VERTICAL } = LIST_TEXTS;
 
 class Home extends React.Component {
   state = {
-    clicks: 0,
-    userUpload: USER_UPLOAD
+    clicks: {}
   };
-  IncrementIconText = () => {
-    this.setState({ clicks: this.state.clicks + 1 });
+
+  getClickCount = (state, image, type) => {
+    if (!state[image] || !state[image][type]) return 0;
+    return state[image][type];
   };
+
+  incrementIconText = (image, type) => {
+    this.setState(prevState => {
+      const previousClickCount = this.getClickCount(prevState, image, type);
+      return {
+        ...prevState,
+        [image]: {
+          ...prevState[image],
+          [type]: previousClickCount + 1
+        }
+      };
+    });
+  };
+
   render() {
-    const actions = ICON_LIST.map(({ type }) => (
-      <span>
-        <Icon
-          key={type}
-          type={type}
-          onClick={this.IncrementIconText}
-          style={ICON}
-        />
-        {this.state.clicks}
-      </span>
-    ));
     return (
       <List
         itemLayout={VERTICAL}
-        dataSource={this.state.userUpload}
+        dataSource={USER_UPLOAD}
         renderItem={item => (
           <List.Item style={USER_LIST}>
             <Card
-              actions={actions}
+              actions={ICON_LIST.map(({ type }) => {
+                return (
+                  <span>
+                    <Icon
+                      key={type}
+                      type={type}
+                      onClick={() => this.incrementIconText(item.image, type)}
+                      style={ICON}
+                    />
+                    {this.getClickCount(this.state, item.image, type)}
+                  </span>
+                );
+              })}
               cover={<img alt={UPLOAD} src={item.image} />}
               extra={<Icon type={MORE} />}
               hoverable
