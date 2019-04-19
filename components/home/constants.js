@@ -25,20 +25,24 @@ export const LIST_TEXTS = {
     AVATAR: {
         marginRight: 8
     },
-    CARD_CONTAINER: {
+    CARD_LIST: {
         width: "650px",
-        marginBottom: 50,
-        marginTop: 50
+        marginTop: 70
     },
     ICON: {
         marginRight: 8 
     },
     USER_LIST: {
+        borderBottomColor: 'transparent',
         width: "100%",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
     },
+    
+    CARD_CONTAINER: {
+        marginBottom: 50
+    }
 };
 
 export const USER_UPLOAD = [

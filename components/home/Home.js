@@ -3,7 +3,7 @@ import { Avatar, Card, Icon, List } from "antd";
 
 import { ICON_LIST, LIST_TEXTS, STYLES, USER_UPLOAD } from "./constants";
 
-const { AVATAR, CARD_CONTAINER, ICON, USER_LIST } = STYLES;
+const { AVATAR, CARD_CONTAINER, CARD_LIST, ICON, USER_LIST } = STYLES;
 const { INNER, MORE, UPLOAD, VERTICAL } = LIST_TEXTS;
 
 class Home extends React.Component {
@@ -31,6 +31,7 @@ class Home extends React.Component {
 
   render() {
     return (
+        <div style={CARD_CONTAINER}>
         <List
           itemLayout={VERTICAL}
           dataSource={USER_UPLOAD}
@@ -60,13 +61,14 @@ class Home extends React.Component {
                   </a>
                 }
                 type={INNER}
-                style={CARD_CONTAINER}
+                style={CARD_LIST}
               >
                 {item.story}
               </Card>
             </List.Item>
           )}
         />
+        </div>
     );
   }
 }
