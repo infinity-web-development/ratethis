@@ -17,12 +17,6 @@ export const STYLES = {
         zIndex: "1",
     },
     
-    MAIN_NAV: {
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-    },
 };
 
 
