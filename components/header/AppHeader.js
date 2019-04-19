@@ -14,12 +14,13 @@ class AppHeader extends React.Component {
         <Header>
           <div className={LOGO} />
           <Menu
+            theme="dark"
             mode={HORIZONTAL}
             defaultSelectedKeys={KEY}
             style={HEADER_STYLES}
           >
             <Item key={LOGO}>
-                <Avatar style={AVATAR} src={Logo} size={LARGE} shape={REGULAR}/>
+                <img style={AVATAR} src={Logo} size={LARGE} />
             </Item>
             <Item key={SIGN_IN}>{SIGN_IN}</Item>
             <Item key={HOME}>{HOME}</Item>

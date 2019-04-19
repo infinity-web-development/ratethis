@@ -1,5 +1,5 @@
 export const HEADER_STYLES = {
-    lineHeight: '64px',
+    // lineHeight: '64px',
     position: "fixed",
     width: "100%",
 };
@@ -11,7 +11,8 @@ export const HEADER_STYLES = {
 // };
 export const AVATAR = {
     width: "200px",
-    // height: "20%",
+    height: "64px",
+    backgroundColor: "white",
 };
 
 export const LAYOUT = "layout";
