@@ -11,24 +11,6 @@ class Home extends React.Component {
     clicks: {}
   };
 
-  getClickCount = (state, image, type) => {
-    if (!state[image] || !state[image][type]) return 0;
-    return state[image][type];
-  };
-
-  incrementIconText = (image, type) => {
-    this.setState(prevState => {
-      const previousClickCount = this.getClickCount(prevState, image, type);
-      return {
-        ...prevState,
-        [image]: {
-          ...prevState[image],
-          [type]: previousClickCount + 1
-        }
-      };
-    });
-  };
-
   render() {
     return (
       <List
