@@ -10,7 +10,6 @@ export const STYLES = {
         width: "100%",
         display: "flex",
         height: "50px",
-        // alignItems: "center",
     },
     
     MAIN_NAV: {
@@ -18,29 +17,6 @@ export const STYLES = {
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",
-        width: "100%",
     },
 };
 
-export const FOOTER_MENU = [
-    {
-        key: "home",
-        path: "/",
-        type: "home",
-    },
-    {
-        key: "profile",
-        path: "/",
-        type: "profile",
-    },    
-    {
-        key: "plus",
-        path: "/",
-        type: "plus",
-    },
-    {
-        key: "more",
-        path: "/",
-        type: "more",
-    },
-]

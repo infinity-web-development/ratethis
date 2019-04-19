@@ -1,8 +1,7 @@
 import React from "react";
 import { Avatar, Card, Icon, List } from "antd";
 
-import UserUpload from './UserUpload';
-import { CONTAINER, ICON_LIST, LIST_TEXTS, STYLES, USER_UPLOAD } from "./constants";
+import { ICON_LIST, LIST_TEXTS, STYLES, USER_UPLOAD } from "./constants";
 
 const { AVATAR, CARD_CONTAINER, ICON, USER_LIST } = STYLES;
 const { INNER, MORE, UPLOAD, VERTICAL } = LIST_TEXTS;
@@ -32,8 +31,6 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div style={CONTAINER}>
-        <UserUpload />
         <List
           itemLayout={VERTICAL}
           dataSource={USER_UPLOAD}
@@ -70,7 +67,6 @@ class Home extends React.Component {
             </List.Item>
           )}
         />
-      </div>
     );
   }
 }

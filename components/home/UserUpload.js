@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'antd';
+import { Icon } from 'antd';
 import UserUploadModal from './UserUploadModal.js';
 
 export default class UserUpload extends React.Component {
@@ -34,7 +34,7 @@ export default class UserUpload extends React.Component {
     render() {
         return (
             <div>
-                <Button type="primary" onClick={this.showModal}>New user upload</Button>
+                <Icon onClick={this.showModal} type="plus" />
                 <UserUploadModal
                   wrappedComponentRef={this.saveFormRef}
                   visible={this.state.visible}

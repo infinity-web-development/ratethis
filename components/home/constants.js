@@ -22,15 +22,13 @@ export const LIST_TEXTS = {
 };
 
  export const STYLES = {
-    CONTAINER: {
-        marginTop: "50px "
-    },
     AVATAR: {
         marginRight: 8
     },
     CARD_CONTAINER: {
         width: "650px",
         marginBottom: 50,
+        marginTop: 50
     },
     ICON: {
         marginRight: 8 
@@ -46,7 +44,7 @@ export const LIST_TEXTS = {
 export const USER_UPLOAD = [
     {
         image: "http://sugarweddings.com/files/styles/width-640/public/1.%20The%20Full%20Ankara%20Ball%20Wedding%20Gown%20@therealrhonkefella.PNG",
-        story: "Today's my birthday next week! What do you think?",
+        story: "It's my birthday next week! What do you think?",
         user: "Chioma",
     },
     {
