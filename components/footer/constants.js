@@ -10,7 +10,6 @@ export const STYLES = {
         width: "100%",
         display: "flex",
         height: "50px",
-        alignItems: "center",
     },
     
     MAIN_NAV: {
@@ -18,7 +17,6 @@ export const STYLES = {
         display: "flex",
         justifyContent: "space-around",
         alignItems: "center",
-        width: "100%",
     },
 };
 
