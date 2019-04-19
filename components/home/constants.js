@@ -22,12 +22,15 @@ export const LIST_TEXTS = {
 };
 
  export const STYLES = {
+    CONTAINER: {
+        marginTop: "50px "
+    },
     AVATAR: {
         marginRight: 8
     },
     CARD_CONTAINER: {
         width: "650px",
-        marginBottom: 50
+        marginBottom: 50,
     },
     ICON: {
         marginRight: 8 
