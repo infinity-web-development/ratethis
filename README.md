@@ -1,0 +1,2 @@
+# ratethis
+A rating application
