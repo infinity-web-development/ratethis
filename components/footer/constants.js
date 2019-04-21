@@ -20,3 +20,25 @@ export const STYLES = {
     },
 };
 
+export const FOOTER_MENU = [
+    {
+        key: "home",
+        path: "/",
+        type: "home",
+    },
+    {
+        key: "profile",
+        path: "/",
+        type: "profile",
+    },    
+    {
+        key: "plus",
+        path: "/",
+        type: "plus",
+    },
+    {
+        key: "more",
+        path: "/",
+        type: "more",
+    },
+]
