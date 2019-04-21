@@ -11,24 +11,6 @@ class Home extends React.Component {
     clicks: {}
   };
 
-  getClickCount = (state, image, type) => {
-    if (!state[image] || !state[image][type]) return 0;
-    return state[image][type];
-  };
-
-  incrementIconText = (image, type) => {
-    this.setState(prevState => {
-      const previousClickCount = this.getClickCount(prevState, image, type);
-      return {
-        ...prevState,
-        [image]: {
-          ...prevState[image],
-          [type]: previousClickCount + 1
-        }
-      };
-    });
-  };
-
   render() {
     return (
         <div style={CARD_CONTAINER}>
@@ -44,10 +26,10 @@ class Home extends React.Component {
                       <Icon
                         key={type}
                         type={type}
-                        onClick={() => this.incrementIconText(item.image, type)}
+                        // onClick={() => this.incrementIconText(item.image, type)}
                         style={ICON}
                       />
-                      {this.getClickCount(this.state, item.image, type)}
+                      {/* {this.getClickCount(this.state, item.image, type)} */}
                     </span>
                   );
                 })}

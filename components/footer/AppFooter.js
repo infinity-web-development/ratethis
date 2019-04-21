@@ -10,24 +10,6 @@ const {CONTAINER, MAIN_NAV} = STYLES
 const { DARK, HORIZONTAL } = MENU_TEXTS
 
 const { Item } = Menu;
-export const FOOTER_MENU = [
-]
-// function createFooterIcons() {
-//     const icons = [
-//         { key: "home", path: "/", type: "home" },
-//         { key: "profile", path: "/", type: "profile" },    
-//         { key: "plus", path: {UserUpload}, type: "plus" },
-//         { key: "more", path: "/", type: "more" },
-//     ];
-//     return icons.map(({ key, path, type }) => (
-//         <Item>
-//             <Link href={path} key={key}>
-//                 <Icon type={type} />
-//             </Link>
-//         </Item>
-//     ))
-// }
-
 
 class AppFooter extends React.Component {
     render() {
