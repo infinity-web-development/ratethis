@@ -1,18 +1,14 @@
-import {
-    DISLIKE_POST,
-    LIKE_POST,
-    MAYBE_POST
-} from './actionTypes';
+import { DISLIKE_REACTION, LIKE_REACTION, MAYBE_REACTION } from './actionTypes';
 
 /**
  * Triggers request to like or unlike post
  *
  * @function
- * @return {Object} The {@link actionTypes.LIKE_POST LIKE_POST}
+ * @return {Object} The {@link actionTypes.LIKE_REACTION LIKE_REACTION}
  * action.
  */
-export const likePost = () => ({
-    type: LIKE_POST,
+export const likeReaction = () => ({
+    type: LIKE_REACTION,
 });
 
 /**
@@ -21,12 +17,12 @@ export const likePost = () => ({
  * @function
  *
  * @param {Object} payload - the data sent with the action
- * @return {Object} The {@link actionTypes.DISLIKE_POST DISLIKE_POST}
+ * @return {Object} The {@link actionTypes.DISLIKE_REACTION DISLIKE_REACTION}
  * action.
  */
-export const dislikePost = payload => ({
+export const dislikeReaction = payload => ({
     payload,
-    type: DISLIKE_POST,
+    type: DISLIKE_REACTION,
 });
 
 /**
@@ -35,10 +31,10 @@ export const dislikePost = payload => ({
  * @function
  *
  * @param {Object} payload - the data sent with the action
- * @return {Object} The {@link actionTypes.MAYBE_POST MAYBE_POST}
+ * @return {Object} The {@link actionTypes.MAYBE_REACTION MAYBE_REACTION}
  * action.
  */
-export const maybePost = payload => ({
+export const maybeReaction = payload => ({
     payload,
-    type: MAYBE_POST,
+    type: MAYBE_REACTION,
 });

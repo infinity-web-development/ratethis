@@ -1,25 +1,25 @@
 import { NAME } from './constants';
 
 /**
- * Fired by the {@link actions.likePost likePost}
+ * Fired by the {@link actions.likeReaction likeReaction}
  * action creator.
  *
  * @type {String}
  */
-export const LIKE_POST = `${NAME}/LIKE_POST`;
+export const LIKE_REACTION = `${NAME}/LIKE_REACTION`;
 
 /**
- * Fired by the {@link actions.dislikePost dislikePost}
+ * Fired by the {@link actions.dislikeReaction dislikeReaction}
  * action creator.
  *
  * @type {String}
  */
-export const DISLIKE_POST = `${NAME}/DISLIKE_POST`;
+export const DISLIKE_REACTION = `${NAME}/DISLIKE_REACTION`;
 
 /**
- * Fired by the {@link actions.maybePost maybePost}
+ * Fired by the {@link actions.maybeReaction maybeReaction}
  * action creator.
  *
  * @type {String}
  */
-export const MAYBE_POST = `${NAME}/MAYBE_POST`;
+export const MAYBE_REACTION = `${NAME}/MAYBE_REACTION`;

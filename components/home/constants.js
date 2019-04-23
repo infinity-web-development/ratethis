@@ -1,6 +1,11 @@
 /** @constant */
 export const NAME = 'reactionFlow';
 
+/** @constant */
+export const INITIAL_STATE = {
+    reactionFlow: new Map(),
+};
+
 export const ICON_LIST = [
     {
         key: 'heart',
