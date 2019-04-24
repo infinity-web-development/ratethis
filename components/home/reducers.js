@@ -1,42 +1,58 @@
 import { DISLIKE_REACTION, LIKE_REACTION, MAYBE_REACTION } from './actionTypes';
 import { INITIAL_STATE } from './constants';
 
-export default ( state = { ...INITIAL_STATE }, action) => {
-  
+/**
+ * Creates a Javascript Map with the cards mapped by id
+ *
+ * @param {Array} reactions - a user's reaction
+ * @return {Map} - the new reaction
+ */
+function generateItemMap(reactions) {
+    const setOfReactions = new Map();
+
+    reactions.forEach(reaction => {
+        const { _id } = reaction;
+
+        setOfReactions.set(_id, reaction);
+    });
+
+    return setOfReactions;
+}
+
+/**
+ * Updates the given reaction type of the item
+ *
+ * @param {Object} reaction - the product to be updated in the list
+ * @param {Map} type - the type of reactions
+ * @return {Map} - the updated user reaction
+ */
+function updateReactionType(reaction, type) {
+    const { _id } = reaction;
+    const newType = new Map([...type.entries()]);
+
+    newType.set(_id, reaction);
+
+    return newType;
+}
+
+export default (state = { ...INITIAL_STATE }, action) => {
     switch (action.type) {
-    case LIKE_REACTION:    {
-        const { data: { token, user }, status } = action.payload;
+        case LIKE_REACTION: {
+            return {
+            };
+        }
 
-        return {
-            ...state,
-            isLoggedIn: true,
-            status,
-            token,
-            user,
-        };
+        case DISLIKE_REACTION: {
+            return {
+            };
+        }
+
+        case MAYBE_REACTION: {
+            return {
+            };
+        }
+
+        default:
+            return state;
     }
-
-    case DISLIKE_REACTION: {
-        Cookies.expire(state.token);
-        
-        return { 
-            ...state,
-            isLoggedIn: false,
-            token: null,
-            user: {},
-        };
-    }
-
-    case MAYBE_REACTION:
-        return { ...initialState };
-
-    case RESET_STATUS_STATE:
-        return {
-            ...state,
-            status: "",
-        };
-
-    default:
-        return state;
-    }
-}; 
+};

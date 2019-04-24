@@ -7,7 +7,7 @@ const { AVATAR, CARD_CONTAINER, CARD_LIST, ICON, USER_LIST } = STYLES;
 const { INNER, MORE, UPLOAD, VERTICAL } = LIST_TEXTS;
 
 class Home extends React.Component {
-    state = { clicks: {} };
+    state = { };
 
     render() {
         return (
