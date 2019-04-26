@@ -48,17 +48,10 @@ export default (state = { ...INITIAL_STATE }, action) => {
             };
         }
 
-        case DISLIKE_REACTION: {
-            return {
-            };
-        }
-
-        case MAYBE_REACTION: {
-            return {
-                ...state,
-            };
-        }
-
+//listens to requests for list of uploads, and updates the state with a fake upload from constants
+//loop over the array and add them to the upload map
+//in the map the key is upload id and value is upload itself
+//Ensure to create a new map else it won't update
         default:
             return state;
     }
