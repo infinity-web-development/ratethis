@@ -1,5 +1,6 @@
 # ratethis
-A rating application built with [React](https://reactjs.org) library on [NextJs](https://nextjs.org) framework [antd](https://ant.design/).
+A rating application built with [React](https://reactjs.org) library on [NextJs](https://nextjs.org) framework and [antd](https://ant.design/) for the user interface.
+
 The states are managed with [Redux](https://redux.js.org)
 
 ## How to start the server
