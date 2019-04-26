@@ -1,4 +1,4 @@
-import { DISLIKE_REACTION, LIKE_REACTION, MAYBE_REACTION } from './actionTypes';
+import { UPDATE_REACTION } from './actionTypes';
 
 /**
  * Triggers request to like or unlike post
@@ -7,34 +7,20 @@ import { DISLIKE_REACTION, LIKE_REACTION, MAYBE_REACTION } from './actionTypes';
  * @return {Object} The {@link actionTypes.LIKE_REACTION LIKE_REACTION}
  * action.
  */
-export const likeReaction = () => ({
+export const updateReaction = payload => ({
+    payload,
     type: LIKE_REACTION,
 });
 
+// an action that requests the lists of uploads
 /**
- * Triggers request to dislike post or reverse dislike
+ * Triggers request to like or unlike post
  *
  * @function
- *
- * @param {Object} payload - the data sent with the action
- * @return {Object} The {@link actionTypes.DISLIKE_REACTION DISLIKE_REACTION}
+ * @return {Object} The {@link actionTypes.LIKE_REACTION LIKE_REACTION}
  * action.
  */
-export const dislikeReaction = payload => ({
+export const requestUploadList = payload => ({
     payload,
-    type: DISLIKE_REACTION,
-});
-
-/**
- * Triggers request to maybe post or reverse maybe
- *
- * @function
- *
- * @param {Object} payload - the data sent with the action
- * @return {Object} The {@link actionTypes.MAYBE_REACTION MAYBE_REACTION}
- * action.
- */
-export const maybeReaction = payload => ({
-    payload,
-    type: MAYBE_REACTION,
+    type: LIKE_REACTION,
 });

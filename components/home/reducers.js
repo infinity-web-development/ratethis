@@ -2,10 +2,10 @@ import { DISLIKE_REACTION, LIKE_REACTION, MAYBE_REACTION } from './actionTypes';
 import { INITIAL_STATE } from './constants';
 
 /**
- * Creates a Javascript Map with the cards mapped by id
+ * Creates a Javascript Map for each card as an object mapped by id
  *
- * @param {Array} reactions - a user's reaction
- * @return {Map} - the new reaction
+ * @param {Array} reactions - array of user reaction objects
+ * @return {Map} - the new reaction list
  */
 function generateItemMap(reactions) {
     const setOfReactions = new Map();
@@ -22,7 +22,7 @@ function generateItemMap(reactions) {
 /**
  * Updates the given reaction type of the item
  *
- * @param {Object} reaction - the product to be updated in the list
+ * @param {Object} reaction - the reaction object with a type and value
  * @param {Map} type - the type of reactions
  * @return {Map} - the updated user reaction
  */
@@ -38,7 +38,13 @@ function updateReactionType(reaction, type) {
 export default (state = { ...INITIAL_STATE }, action) => {
     switch (action.type) {
         case LIKE_REACTION: {
+            const { payload } = action;
+            console.log(payload);
+            const { reactionFlow } = state;
+
             return {
+                ...state,
+                reactionFlow: updateReactionType(payload, reactionFlow),
             };
         }
 
@@ -49,6 +55,7 @@ export default (state = { ...INITIAL_STATE }, action) => {
 
         case MAYBE_REACTION: {
             return {
+                ...state,
             };
         }
 

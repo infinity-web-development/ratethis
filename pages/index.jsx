@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 import { connect } from 'react-redux';
 
 import AppFooterLayout from '../components/footer/AppFooterLayout';
-import Home from '../components/home/Home';
+import Home from '../components/home/components/Home';
 import HeaderLayout from '../components/header/HeaderLayout';
 
 class App extends React.Component {
@@ -18,7 +18,7 @@ class App extends React.Component {
                     </AppFooterLayout>
                 </HeaderLayout>
             </Layout>
-        )
+        );
     }
 }
 
