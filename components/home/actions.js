@@ -1,26 +1,25 @@
-import { UPDATE_REACTION } from './actionTypes';
+import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
 
 /**
- * Triggers request to like or unlike post
+ * Triggers request to react on a post
  *
  * @function
- * @return {Object} The {@link actionTypes.LIKE_REACTION LIKE_REACTION}
+ * @return {Object} The {@link actionTypes.REQUEST_UPLOAD_LIST REQUEST_UPLOAD_LIST}
  * action.
  */
 export const updateReaction = payload => ({
     payload,
-    type: LIKE_REACTION,
+    type: UPDATE_REACTION,
 });
 
-// an action that requests the lists of uploads
 /**
- * Triggers request to like or unlike post
+ * Triggers request for the lists of uploads
  *
  * @function
- * @return {Object} The {@link actionTypes.LIKE_REACTION LIKE_REACTION}
+ * @return {Object} The {@link actionTypes.REQUEST_UPLOAD_LIST REQUEST_UPLOAD_LIST}
  * action.
  */
 export const requestUploadList = payload => ({
     payload,
-    type: LIKE_REACTION,
+    type: REQUEST_UPLOAD_LIST,
 });

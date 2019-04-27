@@ -1,57 +1,58 @@
-import { DISLIKE_REACTION, LIKE_REACTION, MAYBE_REACTION } from './actionTypes';
-import { INITIAL_STATE } from './constants';
+import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
+import { INITIAL_STATE, USER_UPLOADS } from './constants';
 
 /**
- * Creates a Javascript Map for each card as an object mapped by id
+ * Creates a Javascript Map with the user uploads mapped by id
  *
- * @param {Array} reactions - array of user reaction objects
- * @return {Map} - the new reaction list
+ * @param {Array} USER_UPLOADS - a users uploads
+ * @return {Map} - the user uploads
  */
-function generateItemMap(reactions) {
-    const setOfReactions = new Map();
 
-    reactions.forEach(reaction => {
-        const { _id } = reaction;
+function generateUploadsMap() {
+    const setOfUserUploads = new Map();
 
-        setOfReactions.set(_id, reaction);
+    USER_UPLOADS.forEach(userUpload => {
+        const { _id } = userUpload;
+
+        setOfUserUploads.set(_id, userUpload);
     });
 
-    return setOfReactions;
+    return setOfUserUploads;
 }
 
 /**
- * Updates the given reaction type of the item
+ * Updates the value of the reactions
  *
- * @param {Object} reaction - the reaction object with a type and value
- * @param {Map} type - the type of reactions
- * @return {Map} - the updated user reaction
+ * @param {Object} reactions - the reactions with assigned value
+ * @param {Map} value - the value of reactions
+ * @return {Map} - the updated producer value
  */
-function updateReactionType(reaction, type) {
-    const { _id } = reaction;
-    const newType = new Map([...type.entries()]);
+function updateReactions(value) {
+    const { _id, reactions } = USER_UPLOADS;
+    const newValue = new Map([...value.entries()]);
 
-    newType.set(_id, reaction);
+    newValue.set(_id, reactions);
 
-    return newType;
+    return newValue;
 }
 
 export default (state = { ...INITIAL_STATE }, action) => {
     switch (action.type) {
-        case LIKE_REACTION: {
-            const { payload } = action;
-            console.log(payload);
-            const { reactionFlow } = state;
+        case REQUEST_UPLOAD_LIST: {
+            return {
+                ...state,
+                uploads: generateUploadsMap(),
+            };
+        }
+        case UPDATE_REACTION: {
+            const { uploads } = state;
 
             return {
                 ...state,
-                reactionFlow: updateReactionType(payload, reactionFlow),
+                uploads: updateReactions(uploads),
             };
         }
 
-//listens to requests for list of uploads, and updates the state with a fake upload from constants
-//loop over the array and add them to the upload map
-//in the map the key is upload id and value is upload itself
-//Ensure to create a new map else it won't update
         default:
             return state;
     }
