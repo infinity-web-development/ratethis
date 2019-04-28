@@ -20,19 +20,14 @@ function generateUploadsMap() {
     return setOfUserUploads;
 }
 
-/**
- * Updates the value of the reactions
- *
- * @param {Object} reactions - the reactions with assigned value
- * @param {Map} value - the value of reactions
- * @return {Map} - the updated producer value
- */
-function updateReactions(value) {
-    const { _id, reactions } = USER_UPLOADS;
-    const newValue = new Map([...value.entries()]);
-
-    newValue.set(_id, reactions);
-
+function updateItemReactions(_id, reaction) {
+    const newValue = new Map();
+    const upload = USER_UPLOADS.get(_id);
+    upload.reactions = {
+        ...upload.reactions,
+        [reaction]: upload.reactions[reaction] + 1,
+    };
+    newValue.set(_id, upload);
     return newValue;
 }
 
@@ -44,14 +39,12 @@ export default (state = { ...INITIAL_STATE }, action) => {
                 uploads: generateUploadsMap(),
             };
         }
-        case UPDATE_REACTION: {
-            const { uploads } = state;
+        case UPDATE_REACTION:
 
             return {
                 ...state,
-                uploads: updateReactions(uploads),
+                uploads: updateItemReactions(action._id, action.reaction),
             };
-        }
 
         default:
             return state;

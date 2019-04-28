@@ -17,18 +17,23 @@ const IconText = ({ type, text }) => (
         {text}
     </span>
 );
-function createReactionsIcon(item) {
+function createReactionsIcon(item, updateReaction) {
     const { like, dislike, maybe } = item.reactions;
     const icons = [
-        { key: 'like', text: `${like}`, type: 'heart' },
-        { key: 'dislike', text: `${dislike}`, type: 'dislike' },
-        { key: 'maybe', text: `${maybe}`, type: 'meh' },
+        { reaction: 'like', text: `${like}`, type: 'heart' },
+        { reaction: 'dislike', text: `${dislike}`, type: 'dislike' },
+        { reaction: 'maybe', text: `${maybe}`, type: 'meh' },
     ];
-
-    return icons.map(({ key, text, type }) => (
-        <IconText key={key} type={type} text={text} />
+    return icons.map(({ reaction, text, type }) => (
+        <IconText
+          onClick={() => updateReaction(item._id, reaction)}
+          key={reaction}
+          type={type}
+          text={text}
+        />
     ));
 }
+
 class Home extends React.Component {
     componentDidMount() {
         const { requestUploadList } = this.props.actions;
@@ -36,11 +41,10 @@ class Home extends React.Component {
         requestUploadList();
     }
 
-    // componentDidUpdate() {
-    //     const { updateReaction } = this.props.actions;
-
-    //     updateReaction();
-    // }
+    updateReaction = (_id, reaction) => {
+        const { updateReaction } = this.props.actions;
+        updateReaction(_id, reaction);
+    }
 
     render() {
         const { uploads } = this.props;
@@ -54,7 +58,7 @@ class Home extends React.Component {
                   renderItem={item => (
                       <List.Item style={USER_LIST}>
                           <Card
-                            actions={createReactionsIcon(item)}
+                            actions={createReactionsIcon(item, this.updateReaction)}
                             cover={<img alt={UPLOAD} src={item.image} />}
                             extra={<Icon type={MORE} />}
                             hoverable
