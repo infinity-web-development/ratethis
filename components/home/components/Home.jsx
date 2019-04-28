@@ -36,13 +36,13 @@ function createReactionsIcon(item, updateReaction) {
 
 class Home extends React.Component {
     componentDidMount() {
-        const { requestUploadList } = this.props.actions;
+        const { actions: { requestUploadList } } = this.props;
 
         requestUploadList();
     }
 
     updateReaction = (_id, reaction) => {
-        const { updateReaction } = this.props.actions;
+        const { actions: { updateReaction } } = this.props;
         updateReaction(_id, reaction);
     }
 
@@ -82,8 +82,8 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-    uploads: PropTypes.instanceOf(Map),
     actions: PropTypes.object,
+    uploads: PropTypes.instanceOf(Map),
 };
 
 const mapStateToProps = state => ({
