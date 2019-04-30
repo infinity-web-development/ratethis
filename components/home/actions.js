@@ -7,9 +7,9 @@ import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
  * @return {Object} The {@link actionTypes.REQUEST_UPLOAD_LIST REQUEST_UPLOAD_LIST}
  * action.
  */
-export function updateReaction(_id, reaction) {
+export function updateReaction(id, reaction) {
     return {
-        _id,
+        id,
         reaction,
         type: UPDATE_REACTION,
     };

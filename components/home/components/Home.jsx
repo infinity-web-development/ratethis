@@ -11,9 +11,9 @@ import { getUploads } from '../selectors';
 const { AVATAR, CARD_CONTAINER, CARD_LIST, ICON, USER_LIST } = STYLES;
 const { INNER, MORE, UPLOAD, VERTICAL } = LIST_TEXTS;
 
-const IconText = ({ type, text }) => (
+const IconText = ({ type, text, onClick }) => (
     <span>
-        <Icon type={type} style={ICON} />
+        <Icon type={type} style={ICON} onClick={onClick} />
         {text}
     </span>
 );
@@ -26,7 +26,7 @@ function createReactionsIcon(item, updateReaction) {
     ];
     return icons.map(({ reaction, text, type }) => (
         <IconText
-          onClick={() => updateReaction(item._id, reaction)}
+          onClick={() => updateReaction(item.id, reaction)}
           key={reaction}
           type={type}
           text={text}
@@ -41,14 +41,14 @@ class Home extends React.Component {
         requestUploadList();
     }
 
-    updateReaction = (_id, reaction) => {
+    updateReaction = (id, reaction) => {
         const { actions: { updateReaction } } = this.props;
-        updateReaction(_id, reaction);
+        updateReaction(id, reaction);
     }
 
     render() {
         const { uploads } = this.props;
-        const values = Array.from(uploads.values());
+        const values = [...uploads.values()];
 
         return (
             <div style={CARD_CONTAINER}>
