@@ -9,26 +9,26 @@ import { INITIAL_STATE, USER_UPLOADS } from './constants';
  */
 
 function generateUploadsMap() {
-    const setOfUserUploads = new Map();
+    const uploads = new Map();
 
     USER_UPLOADS.forEach(userUpload => {
-        const { _id } = userUpload;
+        const { id } = userUpload;
 
-        setOfUserUploads.set(_id, userUpload);
+        uploads.set(id, userUpload);
     });
 
-    return setOfUserUploads;
+    return uploads;
 }
 
-function updateItemReactions(_id, reaction) {
-    const newValue = new Map();
-    const upload = USER_UPLOADS.get(_id);
-    upload.reactions = {
-        ...upload.reactions,
-        [reaction]: upload.reactions[reaction] + 1,
-    };
-    newValue.set(_id, upload);
-    return newValue;
+function updateUploadReaction(id, reaction, uploads) {
+    const updatedUploads = new Map([...uploads.entries()]);
+    const userUpload = updatedUploads.get(id);
+    userUpload.reactions[reaction] += 1;
+    updatedUploads.set(id, userUpload);
+
+    return updatedUploads;
+
+    // const { reactions: { type } } = userUpload;
 }
 
 export default (state = { ...INITIAL_STATE }, action) => {
@@ -39,12 +39,14 @@ export default (state = { ...INITIAL_STATE }, action) => {
                 uploads: generateUploadsMap(),
             };
         }
-        case UPDATE_REACTION:
+        case UPDATE_REACTION: {
+            const { uploads } = state;
 
             return {
                 ...state,
-                uploads: updateItemReactions(action._id, action.reaction),
+                uploads: updateUploadReaction(action.id, action.reaction, uploads),
             };
+        }
 
         default:
             return state;
