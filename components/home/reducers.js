@@ -27,8 +27,6 @@ function updateUploadReaction(id, reaction, uploads) {
     updatedUploads.set(id, userUpload);
 
     return updatedUploads;
-
-    // const { reactions: { type } } = userUpload;
 }
 
 export default (state = { ...INITIAL_STATE }, action) => {
