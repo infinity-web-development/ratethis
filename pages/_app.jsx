@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Provider } from 'react-redux';
 import App, { Container } from 'next/app';
@@ -24,11 +23,5 @@ class MyApp extends App {
         );
     }
 }
-
-// MyApp.propTypes = {
-//     Component: PropTypes.element,
-//     pageProps: PropTypes.oneOfType,
-//     store: PropTypes.oneOfType,
-// };
 
 export default withRedux(initializeStore)(MyApp);
