@@ -1,12 +1,13 @@
 import React from 'react';
-import stylesheet from 'antd/dist/antd.min.css'
+import stylesheet from 'antd/dist/antd.min.css';
 import { Layout } from 'antd';
+import { connect } from 'react-redux';
 
 import AppFooterLayout from '../components/footer/AppFooterLayout';
 import Home from '../components/home/Home';
 import HeaderLayout from '../components/header/HeaderLayout';
 
-export default class App extends React.Component {
+class App extends React.Component {
     render() {
         return (
             <Layout>
@@ -17,6 +18,8 @@ export default class App extends React.Component {
                     </AppFooterLayout>
                 </HeaderLayout>
             </Layout>
-        )
+        );
     }
 }
+
+export default connect(state => state)(App);

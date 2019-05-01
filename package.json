@@ -1,13 +1,14 @@
 {
-  "name": "rate_my_outfit",
-  "version": "1.0.1",
+  "name": "ratethis",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "now-build": "next build",
+    "start": "next start -p %PORT%"
   },
   "repository": {
     "type": "git",
@@ -21,14 +22,33 @@
   },
   "homepage": "https://github.com/Simpcyclassy/rate_my_outfit#readme",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "antd": "^3.15.1",
     "next": "^8.0.3",
+    "next-images": "^1.1.1",
+    "now": "^15.0.6",
     "react": "^16.8.5",
-    "react-dom": "^16.8.5"
+    "react-dom": "^16.8.5",
+    "react-redux": "^7.0.1",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2",
+    "next-redux-wrapper": "^3.0.0-alpha.2",
+    "prop-types": "^15.7.2",
+    "shallow-equal": "^1.1.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-plugin-import": "^1.11.0",
     "babel-plugin-inline-import": "^3.0.0",
-    "next-images": "^1.1.1"
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "next-antd-aza-less": "^1.0.2"
   }
 }
