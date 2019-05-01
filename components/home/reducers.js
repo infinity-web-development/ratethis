@@ -39,10 +39,11 @@ export default (state = { ...INITIAL_STATE }, action) => {
         }
         case UPDATE_REACTION: {
             const { uploads } = state;
+            const { payload: { id, reaction } } = action;
 
             return {
                 ...state,
-                uploads: updateUploadReaction(action.id, action.reaction, uploads),
+                uploads: updateUploadReaction(id, reaction, uploads),
             };
         }
 

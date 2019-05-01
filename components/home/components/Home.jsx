@@ -20,14 +20,14 @@ const IconText = ({ type, text, onClick }) => (
 function createReactionsIcon(item, updateReaction) {
     const { like, dislike, maybe } = item.reactions;
     const icons = [
-        { reaction: 'like', text: `${like}`, type: 'heart' },
-        { reaction: 'dislike', text: `${dislike}`, type: 'dislike' },
-        { reaction: 'maybe', text: `${maybe}`, type: 'meh' },
+        { key: 'like', text: `${like}`, type: 'heart' },
+        { key: 'dislike', text: `${dislike}`, type: 'dislike' },
+        { key: 'maybe', text: `${maybe}`, type: 'meh' },
     ];
-    return icons.map(({ reaction, text, type }) => (
+    return icons.map(({ key, text, type }) => (
         <IconText
-          onClick={() => updateReaction(item.id, reaction)}
-          key={reaction}
+          onClick={() => updateReaction(item.id, key)}
+          key={key}
           type={type}
           text={text}
         />
