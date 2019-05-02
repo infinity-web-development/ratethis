@@ -1,13 +1,13 @@
-import { USER_UPLOAD_REQUEST } from './actionTypes';
+import { UPDATE_UPLOAD_LIST } from './actionTypes';
 
 /**
  * Triggers request for the lists of uploads
  *
  * @function
- * @return {Object} The {@link actionTypes.USER_UPLOAD_REQUEST USER_UPLOAD_REQUEST}
+ * @return {Object} The {@link actionTypes.UPDATE_UPLOAD_LIST UPDATE_UPLOAD_LIST}
  * action.
  */
-export const userUploadRequest = payload => ({
+export const updateUploadList = payload => ({
     payload,
-    type: USER_UPLOAD_REQUEST,
+    type: UPDATE_UPLOAD_LIST,
 });
