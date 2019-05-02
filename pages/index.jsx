@@ -4,8 +4,10 @@ import { Layout } from 'antd';
 import { connect } from 'react-redux';
 
 import AppFooterLayout from '../components/footer/AppFooterLayout';
-import Home from '../components/home/Home';
+import home from '../components/home';
 import HeaderLayout from '../components/header/HeaderLayout';
+
+const { Home } = home.components;
 
 class App extends React.Component {
     render() {
