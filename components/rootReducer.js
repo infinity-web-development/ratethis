@@ -1,7 +1,10 @@
-import { combineReducers } from 'redux';
+const reducer = (state = { foo: '' }, action) => {
+    switch (action.type) {
+        case 'FOO':
+            return { ...state, foo: action.payload };
+        default:
+            return state;
+    }
+};
 
-import home from './home';
-
-export default combineReducers({
-    home: home.reducers,
-});
+export default reducer;
