@@ -20,10 +20,14 @@ function generateUploadsMap() {
     return uploads;
 }
 
-function updateUploadReaction(id, reaction, uploads) {
+function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
     const userUpload = updatedUploads.get(id);
-    userUpload.reactions[reaction] += 1;
+    if (!userUpload.reactions[type]) {
+        userUpload.reactions[type] += 1;
+    } else {
+        userUpload.reactions[type] -= 1;
+    }
     updatedUploads.set(id, userUpload);
 
     return updatedUploads;

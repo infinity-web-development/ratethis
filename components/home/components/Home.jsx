@@ -43,7 +43,8 @@ class Home extends React.Component {
 
     updateReaction = (id, reaction) => {
         const { actions: { updateReaction } } = this.props;
-        updateReaction(id, reaction);
+        const payload = { id, reaction };
+        updateReaction(payload);
     }
 
     render() {

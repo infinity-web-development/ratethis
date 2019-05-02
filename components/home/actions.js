@@ -7,9 +7,8 @@ import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
  * @return {Object} The {@link actionTypes.REQUEST_UPLOAD_LIST REQUEST_UPLOAD_LIST}
  * action.
  */
-export const updateReaction = (id, reaction) => ({
-    id,
-    reaction,
+export const updateReaction = payload => ({
+    payload,
     type: UPDATE_REACTION,
 });
 
