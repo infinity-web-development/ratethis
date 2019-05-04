@@ -66,7 +66,7 @@ class Home extends React.Component {
                             title={(
                                 <a href="/">
                                     <Avatar src={item.image} style={AVATAR} />
-                                    {item.user}
+                                    {/* {item.name} */}
                                 </a>
                             )}
                             type={INNER}
@@ -83,8 +83,14 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-    actions: PropTypes.object,
+    actions: PropTypes.objectOf(PropTypes.object),
     uploads: PropTypes.instanceOf(Map),
+};
+
+IconText.propTypes = {
+    onClick: PropTypes.func,
+    text: PropTypes.string,
+    type: PropTypes.string,
 };
 
 const mapStateToProps = state => ({

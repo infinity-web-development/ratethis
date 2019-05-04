@@ -1,5 +1,5 @@
 import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
-import { INITIAL_STATE, USER_UPLOADS } from './constants';
+import { INITIAL_STATE, USER } from './constants';
 
 /**
  * Creates a Javascript Map with the user uploads mapped by id
@@ -10,8 +10,9 @@ import { INITIAL_STATE, USER_UPLOADS } from './constants';
 
 function generateUploadsMap() {
     const uploads = new Map();
+    const { userUploads } = USER;
 
-    USER_UPLOADS.forEach(userUpload => {
+    userUploads.forEach(userUpload => {
         const { id } = userUpload;
 
         uploads.set(id, userUpload);
@@ -23,11 +24,13 @@ function generateUploadsMap() {
 function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
     const userUpload = updatedUploads.get(id);
-    if (!userUpload.reactions[type]) {
+
+    if (USER && !userUpload.reactions[type]) {
         userUpload.reactions[type] += 1;
     } else {
         userUpload.reactions[type] -= 1;
     }
+
     updatedUploads.set(id, userUpload);
 
     return updatedUploads;
