@@ -4,13 +4,12 @@ import { Avatar, Card, Icon, List } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { LIST_TEXTS, STYLES, USER } from '../constants';
+import { LIST_TEXTS, STYLES } from '../constants';
 import * as actions from '../actions';
 import { getUploads } from '../selectors';
 
 const { AVATAR, CARD_CONTAINER, CARD_LIST, ICON, USER_LIST } = STYLES;
 const { INNER, MORE, UPLOAD, VERTICAL } = LIST_TEXTS;
-const { name } = USER;
 
 const IconText = ({ type, text, onClick }) => (
     <span>
@@ -67,7 +66,7 @@ class Home extends React.Component {
                             title={(
                                 <a href="/">
                                     <Avatar src={item.image} style={AVATAR} />
-                                    {name}
+                                    {item.name}
                                 </a>
                             )}
                             type={INNER}
