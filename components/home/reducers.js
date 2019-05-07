@@ -1,7 +1,5 @@
-import faker from 'faker';
-
 import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
-import { INITIAL_STATE } from './constants';
+import { INITIAL_STATE, USER_UPLOADS } from './constants';
 
 /**
  * Creates a Javascript Map with the user uploads mapped by id
@@ -9,33 +7,14 @@ import { INITIAL_STATE } from './constants';
  * @param {Array} USER_UPLOADS - a users uploads
  * @return {Map} - the user uploads
  */
-const users = [];
-
-for (let id = 1; id <= 3; id++) {
-    const story = faker.lorem.sentences();
-    const image = faker.image.avatar();
-    const name = faker.name.findName();
-
-    users.push({
-        id,
-        image,
-        name,
-        reactions: {
-            dislike: 0,
-            like: 0,
-            maybe: 0,
-        },
-        story,
-    });
-}
 
 function generateUploadsMap() {
     const uploads = new Map();
 
-    users.forEach(user => {
-        const { id } = user;
+    USER_UPLOADS.forEach(userUpload => {
+        const { id } = userUpload;
 
-        uploads.set(id, user);
+        uploads.set(id, userUpload);
     });
 
     return uploads;
@@ -43,15 +22,13 @@ function generateUploadsMap() {
 
 function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
-    const user = updatedUploads.get(id);
-
-    if (user && !user.reactions[type]) {
-        user.reactions[type] += 1;
+    const userUpload = updatedUploads.get(id);
+    if (!userUpload.reactions[type]) {
+        userUpload.reactions[type] += 1;
     } else {
-        user.reactions[type] -= 1;
+        userUpload.reactions[type] -= 1;
     }
-
-    updatedUploads.set(id, user);
+    updatedUploads.set(id, userUpload);
 
     return updatedUploads;
 }

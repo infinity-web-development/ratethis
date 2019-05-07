@@ -14,9 +14,9 @@ class AppFooter extends React.Component {
         return (
             <div style={CONTAINER}>
                 <Menu
-                  mode={HORIZONTAL}
-                  theme={DARK}
-                  style={MAIN_NAV}
+                    mode={HORIZONTAL}
+                    theme={DARK}
+                    style={MAIN_NAV}
                 >
                     {
                         FOOTER_MENU.map(({ key, path, type }) => (

@@ -104,8 +104,9 @@
 
         "react/no-danger": "error",
         "react/jsx-pascal-case": "error",
-        "react/jsx-indent": ["error", 4],
         "react/jsx-closing-bracket-location": "error",
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
         "react/void-dom-elements-no-children": "error",
         "react/jsx-tag-spacing": "error",
         "react/jsx-no-literals": "error",
