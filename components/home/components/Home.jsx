@@ -66,7 +66,7 @@ class Home extends React.Component {
                                 title={(
                                     <a href="/">
                                         <Avatar src={item.image} style={AVATAR} />
-                                        {item.name}
+                                        {item.user}
                                     </a>
                             )}
                                 type={INNER}
