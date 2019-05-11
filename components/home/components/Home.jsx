@@ -24,12 +24,13 @@ function createReactionsIcon(item, updateReaction) {
         { key: 'dislike', text: `${dislike}`, type: 'dislike' },
         { key: 'maybe', text: `${maybe}`, type: 'meh' },
     ];
+
     return icons.map(({ key, text, type }) => (
         <IconText
-          onClick={() => updateReaction(item.id, key)}
-          key={key}
-          type={type}
-          text={text}
+            onClick={() => updateReaction(item.id, key)}
+            key={key}
+            type={type}
+            text={text}
         />
     ));
 }
@@ -54,28 +55,28 @@ class Home extends React.Component {
         return (
             <div style={CARD_CONTAINER}>
                 <List
-                  itemLayout={VERTICAL}
-                  dataSource={values}
-                  renderItem={item => (
-                      <List.Item style={USER_LIST}>
-                          <Card
-                            actions={createReactionsIcon(item, this.updateReaction)}
-                            cover={<img alt={UPLOAD} src={item.image} />}
-                            extra={<Icon type={MORE} />}
-                            hoverable
-                            title={(
-                                <a href="/">
-                                    <Avatar src={item.image} style={AVATAR} />
-                                    {item.user}
-                                </a>
+                    itemLayout={VERTICAL}
+                    dataSource={values}
+                    renderItem={item => (
+                        <List.Item style={USER_LIST}>
+                            <Card
+                                actions={createReactionsIcon(item, this.updateReaction)}
+                                cover={<img alt={UPLOAD} src={item.image} />}
+                                extra={<Icon type={MORE} />}
+                                hoverable
+                                title={(
+                                    <a href="/">
+                                        <Avatar src={item.image} style={AVATAR} />
+                                        {item.user}
+                                    </a>
                             )}
-                            type={INNER}
-                            style={CARD_LIST}
-                          >
-                              {item.story}
-                          </Card>
-                      </List.Item>
-                  )}
+                                type={INNER}
+                                style={CARD_LIST}
+                            >
+                                {item.story}
+                            </Card>
+                        </List.Item>
+                    )}
                 />
             </div>
         );
@@ -83,8 +84,14 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-    actions: PropTypes.object,
+    actions: PropTypes.objectOf(PropTypes.object),
     uploads: PropTypes.instanceOf(Map),
+};
+
+IconText.propTypes = {
+    onClick: PropTypes.func,
+    text: PropTypes.string,
+    type: PropTypes.string,
 };
 
 const mapStateToProps = state => ({

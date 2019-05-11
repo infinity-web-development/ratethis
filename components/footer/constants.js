@@ -1,44 +1,44 @@
 export const MENU_TEXTS = {
-    DARK: "dark",
-    HORIZONTAL: "horizontal",
+    DARK: 'dark',
+    HORIZONTAL: 'horizontal',
 };
 
 export const STYLES = {
-    CONTAINER : {
-        position: "fixed",
+    CONTAINER: {
         bottom: 0,
-        width: "100%",
-        display: "flex",
-        height: "50px",
+        display: 'flex',
+        height: '50px',
+        position: 'fixed',
+        width: '100%',
     },
-    
+
     MAIN_NAV: {
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
+        alignItems: 'center',
+        display: 'flex',
+        justifyContent: 'space-around',
+        width: '100%',
     },
 };
 
 export const FOOTER_MENU = [
     {
-        key: "home",
-        path: "/",
-        type: "home",
+        key: 'home',
+        path: '/',
+        type: 'home',
     },
     {
-        key: "profile",
-        path: "/",
-        type: "profile",
-    },    
-    {
-        key: "plus",
-        path: "/",
-        type: "plus",
+        key: 'profile',
+        path: '/',
+        type: 'profile',
     },
     {
-        key: "more",
-        path: "/",
-        type: "more",
+        key: 'plus',
+        path: '/',
+        type: 'plus',
     },
-]
+    {
+        key: 'more',
+        path: '/',
+        type: 'more',
+    },
+];
