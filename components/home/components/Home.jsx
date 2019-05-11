@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Poll from 'react-polls';
 import React from 'react';
 import { Avatar, Card, Icon, List } from 'antd';
 import { connect } from 'react-redux';
@@ -10,6 +11,7 @@ import { getUploads } from '../selectors';
 
 const { AVATAR, CARD_CONTAINER, CARD_LIST, ICON, USER_LIST } = STYLES;
 const { INNER, MORE, UPLOAD, VERTICAL } = LIST_TEXTS;
+const { Meta } = Card;
 
 const IconText = ({ type, text, onClick }) => (
     <span>
@@ -34,11 +36,33 @@ function createReactionsIcon(item, updateReaction) {
     ));
 }
 
+const pollAnswers = [
+    { option: 'Outfit A', votes: 0 },
+    { option: 'Outfit B', votes: 0 },
+];
+
 class Home extends React.Component {
+    // Setting answers to state to reload the component with each vote
+    state = {
+        pollAnswers: [...pollAnswers],
+    }
+
     componentDidMount() {
         const { actions: { requestUploadList } } = this.props;
 
         requestUploadList();
+    }
+
+    // Handling user vote
+    // Increments the votes count of answer when the user votes
+    handleVote = voteAnswer => {
+        const newPollAnswers = pollAnswers.map(answer => {
+            if (answer.option === voteAnswer) answer.votes++;
+            return answer;
+        });
+        this.setState({
+            pollAnswers: newPollAnswers,
+        });
     }
 
     updateReaction = (id, reaction) => {
@@ -73,6 +97,38 @@ class Home extends React.Component {
                                 style={CARD_LIST}
                             >
                                 {item.story}
+                            </Card>
+                        </List.Item>
+                    )}
+                />
+                <List
+                    itemLayout={VERTICAL}
+                    dataSource={values}
+                    renderItem={item => (
+                        <List.Item style={USER_LIST}>
+                            <Card
+                                // actions={<Poll answers={pollAnswers} onVote={this.handleVote} />}
+                                cover={(
+                                    <span>
+                                        <img width="50%" alt={UPLOAD} src={item.image} />
+                                        <img width="50%" alt={UPLOAD} src={item.image2} />
+                                    </span>
+                                )}
+                                extra={<Icon type={MORE} />}
+                                hoverable
+                                title={(
+                                    <a href="/">
+                                        <Avatar src={item.image} style={AVATAR} />
+                                        {item.user}
+                                    </a>
+                                )}
+                                type={INNER}
+                                style={CARD_LIST}
+                            >
+                                <Meta
+                                    title={<Poll answers={pollAnswers} onVote={this.handleVote} />}
+                                    description={item.story}
+                                />
                             </Card>
                         </List.Item>
                     )}

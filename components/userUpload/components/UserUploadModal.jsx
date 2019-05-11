@@ -1,9 +1,10 @@
 import React from 'react';
-import { Form, Icon, Input, Modal, Upload } from 'antd';
+import { Form, Icon, Input, Modal, Select, Upload } from 'antd';
 
 import { PLUS, UPLOAD } from '../constants';
 
-const FormItem = Form.Item;
+const { Item } = Form;
+const { Option } = Select;
 
 class UserUploadForm extends React.Component {
     state = {
@@ -44,29 +45,35 @@ class UserUploadForm extends React.Component {
 
         return (
             <Modal
-              visible={visible}
-              title="Create a new user upload"
-              okText="Create"
-              onCancel={onCancel}
-              onOk={onCreate}
+                visible={visible}
+                title="Create a new user upload"
+                okText="Create"
+                onCancel={onCancel}
+                onOk={onCreate}
             >
                 <Form layout="vertical">
-                    <FormItem label="Story">
+                    <Item label="Story">
                         {getFieldDecorator('story', {
                             rules: [{ message: 'Please input your descriptions' }],
                         })(
                             <Input />
                         )}
-                    </FormItem>
+                    </Item>
+                    <Item>
+                        <Select placeholder="Comparison">
+                            <Option value="single">Single Outfit</Option>
+                            <Option value="double">Compare Outfit</Option>
+                        </Select>
+                    </Item>
                 </Form>
                 <div>
                     <Upload {...props}>
                         {fileList.length >= 0 && uploadButton}
                     </Upload>
                     <Modal
-                      visible={previewVisible}
-                      footer={null}
-                      onCancel={this.handleCancel}
+                        visible={previewVisible}
+                        footer={null}
+                        onCancel={this.handleCancel}
                     >
                         <img alt="example" style={{ width: '100%' }} src={previewImage} />
                     </Modal>
