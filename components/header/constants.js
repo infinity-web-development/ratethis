@@ -12,7 +12,7 @@ export const STYLES = {
     LOGO_IMG: {
         backgroundColor: 'white',
         height: '64px',
-        width: '200px',
+        width: '150px',
     },
 };
 

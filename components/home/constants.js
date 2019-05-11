@@ -6,6 +6,7 @@ export const INITIAL_STATE = {
     uploads: new Map(),
 };
 
+/** @constant */
 export const LIST_TEXTS = {
     INNER: 'inner',
     MORE: 'more',

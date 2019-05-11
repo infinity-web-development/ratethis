@@ -16,9 +16,9 @@ class AppFooter extends React.Component {
         return (
             <div style={CONTAINER}>
                 <Menu
-                  mode={HORIZONTAL}
-                  theme={DARK}
-                  style={MAIN_NAV}
+                    mode={HORIZONTAL}
+                    theme={DARK}
+                    style={MAIN_NAV}
                 >
                     <Item>
                         <Link href="/" key="home">

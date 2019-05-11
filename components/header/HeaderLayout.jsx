@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import AppHeader from './AppHeader';
@@ -5,6 +6,7 @@ import AppHeader from './AppHeader';
 class HeaderLayout extends React.Component {
     render() {
         const { children } = this.props;
+
         return (
             <div>
                 <AppHeader />
@@ -14,4 +16,10 @@ class HeaderLayout extends React.Component {
     }
 }
 
+HeaderLayout.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]),
+};
 export default HeaderLayout;
