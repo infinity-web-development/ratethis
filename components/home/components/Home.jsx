@@ -24,6 +24,7 @@ function createReactionsIcon(item, updateReaction) {
         { key: 'dislike', text: `${dislike}`, type: 'dislike' },
         { key: 'maybe', text: `${maybe}`, type: 'meh' },
     ];
+
     return icons.map(({ key, text, type }) => (
         <IconText
             onClick={() => updateReaction(item.id, key)}
