@@ -1,61 +1,54 @@
 import faker from 'faker';
-
 import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
 import { INITIAL_STATE } from './constants';
 
-/**
- * Creates a Javascript Map with the user uploads mapped by id
- *
- * @param {Array} USER_UPLOADS - a users uploads
- * @return {Map} - the user uploads
- */
 const users = [];
 
-for (let id = 1; id <= 3; id++) {
+for (let id = 1; id <= 3; id += 1) {
     const story = faker.lorem.sentences();
     const image = faker.image.avatar();
     const name = faker.name.findName();
+    const reactions = { dislike: 0, like: 0, maybe: 0 };
+    const userUploads = { image, name, reactions, story };
 
     users.push({
         id,
-        image,
         name,
-        reactions: {
-            dislike: 0,
-            like: 0,
-            maybe: 0,
-        },
-        story,
+        userUploads,
     });
 }
 
+/**
+* Creates a Javascript Map with the user uploads mapped by id
+*
+* @param {Array} USER_UPLOADS - a users uploads
+* @return {Map} - the user uploads
+*/
 function generateUploadsMap() {
     const uploads = new Map();
 
     users.forEach(user => {
-        const { id } = user;
-
-        uploads.set(id, user);
+        const { id, userUploads } = user;
+        uploads.set(id, userUploads);
     });
 
     return uploads;
 }
-
 function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
-    const user = updatedUploads.get(id);
+    const user = users.get(id);
+    const userUploads = updatedUploads.get(id);
 
-    if (user && !user.reactions[type]) {
-        user.reactions[type] += 1;
+    if (user && !userUploads.reactions[type]) {
+        userUploads.reactions[type] += 1;
+        user.id = true;
     } else {
-        user.reactions[type] -= 1;
+        userUploads.reactions[type] -= 1;
     }
-
-    updatedUploads.set(id, user);
+    updatedUploads.set(id, userUploads);
 
     return updatedUploads;
 }
-
 export default (state = { ...INITIAL_STATE }, action) => {
     switch (action.type) {
         case REQUEST_UPLOAD_LIST: {
@@ -73,7 +66,6 @@ export default (state = { ...INITIAL_STATE }, action) => {
                 uploads: updateUploadReaction(id, reaction, uploads),
             };
         }
-
         default:
             return state;
     }
