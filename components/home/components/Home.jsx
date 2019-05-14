@@ -54,28 +54,32 @@ class Home extends React.Component {
         return (
             <div style={CARD_CONTAINER}>
                 <List
-                  itemLayout={VERTICAL}
-                  dataSource={values}
-                  renderItem={item => (
-                      <List.Item style={USER_LIST}>
-                          <Card
-                            actions={createReactionsIcon(item, this.updateReaction)}
-                            cover={<img alt={UPLOAD} src={item.image} />}
-                            extra={<Icon type={MORE} />}
-                            hoverable
-                            title={(
-                                <a href="/">
-                                    <Avatar src={item.image} style={AVATAR} />
-                                    {item.name}
-                                </a>
-                            )}
-                            type={INNER}
-                            style={CARD_LIST}
-                          >
-                              {item.story}
-                          </Card>
-                      </List.Item>
-                  )}
+                    itemLayout={VERTICAL}
+                    dataSource={values}
+                    renderItem={item => {
+                        const { description, image, name } = item;
+
+                        return (
+                            <List.Item style={USER_LIST}>
+                                <Card
+                                    actions={createReactionsIcon(item, this.updateReaction)}
+                                    cover={<img alt={UPLOAD} src={image} />}
+                                    extra={<Icon type={MORE} />}
+                                    hoverable
+                                    title={(
+                                        <a href="/">
+                                            <Avatar src={image} style={AVATAR} />
+                                            {/* {item.name} */}
+                                        </a>
+                                    )}
+                                    type={INNER}
+                                    style={CARD_LIST}
+                                >
+                                    {description}
+                                </Card>
+                            </List.Item>
+                        );
+                  }}
                 />
             </div>
         );

@@ -3,6 +3,7 @@ export const NAME = 'home';
 
 /** @constant */
 export const INITIAL_STATE = {
+    fakeUserId: ' ',
     uploads: new Map(),
 };
 
