@@ -20,9 +20,9 @@ const IconText = ({ type, text, onClick }) => (
 function createReactionsIcon(item, updateReaction) {
     const { like, dislike, maybe } = item.reactions;
     const icons = [
-        { key: 'like', text: `${like}`, type: 'heart' },
-        { key: 'dislike', text: `${dislike}`, type: 'dislike' },
-        { key: 'maybe', text: `${maybe}`, type: 'meh' },
+        { key: 'like', text: `${like.count}`, type: 'heart' },
+        { key: 'dislike', text: `${dislike.count}`, type: 'dislike' },
+        { key: 'maybe', text: `${maybe.count}`, type: 'meh' },
     ];
 
     return icons.map(({ key, text, type }) => (
@@ -57,9 +57,8 @@ class Home extends React.Component {
                 <List
                     itemLayout={VERTICAL}
                     dataSource={values}
-<<<<<<< HEAD
                     renderItem={item => {
-                        const { description, image, name } = item;
+                        const { avatar, description, id, image, name } = item;
 
                         return (
                             <List.Item style={USER_LIST}>
@@ -68,12 +67,13 @@ class Home extends React.Component {
                                     cover={<img alt={UPLOAD} src={image} />}
                                     extra={<Icon type={MORE} />}
                                     hoverable
+                                    key={id}
                                     title={(
                                         <a href="/">
-                                            <Avatar src={image} style={AVATAR} />
-                                            {/* {item.name} */}
+                                            <Avatar src={avatar} style={AVATAR} />
+                                            {name}
                                         </a>
-                                    )}
+                                )}
                                     type={INNER}
                                     style={CARD_LIST}
                                 >
@@ -81,29 +81,7 @@ class Home extends React.Component {
                                 </Card>
                             </List.Item>
                         );
-                  }}
-=======
-                    renderItem={item => (
-                        <List.Item style={USER_LIST}>
-                            <Card
-                                actions={createReactionsIcon(item, this.updateReaction)}
-                                cover={<img alt={UPLOAD} src={item.image} />}
-                                extra={<Icon type={MORE} />}
-                                hoverable
-                                title={(
-                                    <a href="/">
-                                        <Avatar src={item.image} style={AVATAR} />
-                                        {item.user}
-                                    </a>
-                            )}
-                                type={INNER}
-                                style={CARD_LIST}
-                            >
-                                {item.story}
-                            </Card>
-                        </List.Item>
-                    )}
->>>>>>> master
+                    }}
                 />
             </div>
         );

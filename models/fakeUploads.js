@@ -1,11 +1,13 @@
 import faker from 'faker';
-import uuidv1 from 'uuid/v1';
+import uuid from 'uuid/v1';
 
 const fakeUploads = [
     {
+        avatar: faker.image.avatar(),
         description: faker.lorem.sentences(),
-        id: uuidv1(),
+        id: uuid(),
         image: faker.image.avatar(),
+        name: faker.name.findName(),
         reactions: {
             dislike: {
                 count: 0,
@@ -22,9 +24,11 @@ const fakeUploads = [
         },
     },
     {
+        avatar: faker.image.avatar(),
         description: faker.lorem.sentences(),
-        id: uuidv1(),
+        id: uuid(),
         image: faker.image.avatar(),
+        name: faker.name.findName(),
         reactions: {
             dislike: {
                 count: 0,
@@ -41,13 +45,15 @@ const fakeUploads = [
         },
     },
     {
+        avatar: faker.image.avatar(),
         comparisons: { // Object.keys(comparison) => [0, 1]
             0: { votes: 0 },
             1: { votes: 0 },
         },
         description: faker.lorem.sentences(),
-        id: uuidv1(),
+        id: uuid(),
         image: faker.image.avatar(),
+        name: faker.name.findName(),
         reactions: {
             dislike: {
                 count: 0,

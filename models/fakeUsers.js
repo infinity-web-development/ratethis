@@ -1,21 +1,14 @@
-import faker from 'faker';
-import uuidv1 from 'uuid/v1';
+import uuid from 'uuid/v1';
 
 const fakeUsers = [
     {
-        avatar: faker.image.avatar(),
-        id: uuidv1(),
-        name: faker.name.findName(),
+        id: uuid(),
     },
     {
-        avatar: faker.image.avatar(),
-        id: uuidv1(),
-        name: faker.name.findName(),
+        id: uuid(),
     },
     {
-        avatar: faker.image.avatar(),
-        id: uuidv1(),
-        name: faker.name.findName(),
+        id: uuid(),
     },
 ];
 
