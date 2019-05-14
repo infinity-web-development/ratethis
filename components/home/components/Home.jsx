@@ -24,12 +24,13 @@ function createReactionsIcon(item, updateReaction) {
         { key: 'dislike', text: `${dislike}`, type: 'dislike' },
         { key: 'maybe', text: `${maybe}`, type: 'meh' },
     ];
+
     return icons.map(({ key, text, type }) => (
         <IconText
-          onClick={() => updateReaction(item.id, key)}
-          key={key}
-          type={type}
-          text={text}
+            onClick={() => updateReaction(item.id, key)}
+            key={key}
+            type={type}
+            text={text}
         />
     ));
 }
@@ -56,6 +57,7 @@ class Home extends React.Component {
                 <List
                     itemLayout={VERTICAL}
                     dataSource={values}
+<<<<<<< HEAD
                     renderItem={item => {
                         const { description, image, name } = item;
 
@@ -80,6 +82,28 @@ class Home extends React.Component {
                             </List.Item>
                         );
                   }}
+=======
+                    renderItem={item => (
+                        <List.Item style={USER_LIST}>
+                            <Card
+                                actions={createReactionsIcon(item, this.updateReaction)}
+                                cover={<img alt={UPLOAD} src={item.image} />}
+                                extra={<Icon type={MORE} />}
+                                hoverable
+                                title={(
+                                    <a href="/">
+                                        <Avatar src={item.image} style={AVATAR} />
+                                        {item.user}
+                                    </a>
+                            )}
+                                type={INNER}
+                                style={CARD_LIST}
+                            >
+                                {item.story}
+                            </Card>
+                        </List.Item>
+                    )}
+>>>>>>> master
                 />
             </div>
         );

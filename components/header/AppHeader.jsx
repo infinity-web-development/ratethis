@@ -13,10 +13,10 @@ class AppHeader extends React.Component {
         return (
             <Header style={HEADER_CONTAINER}>
                 <Menu
-                  theme={DARK}
-                  mode={HORIZONTAL}
-                  defaultSelectedKeys={KEY}
-                  style={HEADER_MENU}
+                    theme={DARK}
+                    mode={HORIZONTAL}
+                    defaultSelectedKeys={KEY}
+                    style={HEADER_MENU}
                 >
                     <Item key={LOGO}>
                         <img style={LOGO_IMG} src={Logo} alt={LOGO} />
