@@ -7,7 +7,6 @@ const fakeUploads = [
         description: faker.lorem.sentences(),
         id: uuid(),
         image: faker.image.avatar(),
-        name: faker.name.findName(),
         reactions: {
             dislike: {
                 count: 0,
@@ -21,6 +20,11 @@ const fakeUploads = [
                 count: 0,
                 users: {},
             },
+        },
+        user: {
+            fakeUserId: uuid(),
+            image: faker.image.avatar(),
+            name: faker.name.findName(),
         },
     },
     {
@@ -42,6 +46,11 @@ const fakeUploads = [
                 count: 0,
                 users: {},
             },
+        },
+        user: {
+            fakeUserId: uuid(),
+            image: faker.image.avatar(),
+            name: faker.name.findName(),
         },
     },
     {
@@ -68,6 +77,12 @@ const fakeUploads = [
                 users: {},
             },
         },
+        user: {
+            fakeUserId: uuid(),
+            image: faker.image.avatar(),
+            name: faker.name.findName(),
+        },
+
     },
 ];
 

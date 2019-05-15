@@ -58,7 +58,7 @@ class Home extends React.Component {
                     itemLayout={VERTICAL}
                     dataSource={values}
                     renderItem={item => {
-                        const { avatar, description, id, image, name } = item;
+                        const { avatar, description, id, user: { image, name } } = item;
 
                         return (
                             <List.Item style={USER_LIST}>

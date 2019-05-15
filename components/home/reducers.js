@@ -26,14 +26,19 @@ function generateUploadsMap() {
 
 function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
-    const userUploads = updatedUploads.get(id);
+    const upload = updatedUploads.get(id);
+    const { reactions } = upload;
 
-    if (!userUploads.reactions[type]) {
-        userUploads.reactions[type] += 1;
-    } else {
-        userUploads.reactions[type] -= 1;
-    }
-    updatedUploads.set(id, userUploads);
+    const userId = reactions.map(({ user }) => {
+        if (!user) {
+            upload.reactions[type].count += 1;
+        } else {
+            upload.reactions[type].count -= 1;
+        }
+        return user;
+    });
+
+    updatedUploads.set(id, upload);
 
     return updatedUploads;
 }
