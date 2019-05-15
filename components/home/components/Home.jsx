@@ -22,9 +22,9 @@ const IconText = ({ type, text, onClick }) => (
 function createReactionsIcon(item, updateReaction) {
     const { like, dislike, maybe } = item.reactions;
     const icons = [
-        { key: 'like', text: `${like}`, type: 'heart' },
-        { key: 'dislike', text: `${dislike}`, type: 'dislike' },
-        { key: 'maybe', text: `${maybe}`, type: 'meh' },
+        { key: 'like', text: `${like.count}`, type: 'heart' },
+        { key: 'dislike', text: `${dislike.count}`, type: 'dislike' },
+        { key: 'maybe', text: `${maybe.count}`, type: 'meh' },
     ];
     return icons.map(({ key, text, type }) => (
         <IconText
@@ -57,7 +57,7 @@ class Home extends React.Component {
     // Increments the votes count of answer when the user votes
     handleVote = voteAnswer => {
         const newPollAnswers = pollAnswers.map(answer => {
-            if (answer.option === voteAnswer) answer.votes++;
+            if (answer.option === voteAnswer) answer.votes += 1;
             return answer;
         });
         this.setState({
@@ -111,7 +111,7 @@ class Home extends React.Component {
                                 cover={(
                                     <span>
                                         <img width="50%" alt={UPLOAD} src={item.image} />
-                                        <img width="50%" alt={UPLOAD} src={item.image2} />
+                                        <img width="50%" alt={UPLOAD} src={item.image} />
                                     </span>
                                 )}
                                 extra={<Icon type={MORE} />}

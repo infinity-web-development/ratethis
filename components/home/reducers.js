@@ -1,6 +1,8 @@
 import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
 import { INITIAL_STATE, USER_UPLOADS } from './constants';
 
+import fakeUploads from '../../models/fakeUploads';
+import fakeUsers from '../../models/fakeUsers';
 /**
  * Creates a Javascript Map with the user uploads mapped by id
  *
@@ -11,24 +13,28 @@ import { INITIAL_STATE, USER_UPLOADS } from './constants';
 function generateUploadsMap() {
     const uploads = new Map();
 
-    USER_UPLOADS.forEach(userUpload => {
-        const { id } = userUpload;
+    fakeUploads.forEach(upload => {
+        const { id } = upload;
 
-        uploads.set(id, userUpload);
+        uploads.set(id, upload);
     });
 
     return uploads;
 }
 
-function updateUploadReaction(id, type, uploads) {
+function updateUploadReaction(_id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
-    const userUpload = updatedUploads.get(id);
-    if (!userUpload.reactions[type]) {
-        userUpload.reactions[type] += 1;
-    } else {
-        userUpload.reactions[type] -= 1;
-    }
-    updatedUploads.set(id, userUpload);
+    const upload = updatedUploads.get(_id);
+
+    fakeUsers.forEach(({ id }) => {
+        if (!id) {
+            upload.reactions[type] += 1;
+        } else {
+            upload.reactions[type] -= 1;
+        }
+    });
+
+    updatedUploads.set(_id, upload);
 
     return updatedUploads;
 }
