@@ -24,7 +24,7 @@ function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
     const upload = updatedUploads.get(id);
 
-    fakeUploads.forEach(upload => {
+    uploads.forEach(() => {
         const { users: { userId } } = upload.reactions[type];
         if (!userId) {
             upload.reactions[type].count += 1;
