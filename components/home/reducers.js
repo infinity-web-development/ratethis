@@ -1,11 +1,7 @@
 import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
-import { INITIAL_STATE, USER_UPLOADS } from './constants';
+import { INITIAL_STATE } from './constants';
 
-import fakeUploads from '../../models/fakeUploads'
-
-function createFakeUsers() {
-
-}
+import fakeUploads from '../../models/fakeUploads';
 
 /**
 * Creates a Javascript Map with the user uploads mapped by id
@@ -27,21 +23,23 @@ function generateUploadsMap() {
 function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
     const upload = updatedUploads.get(id);
-    const { reactions } = upload;
 
-    const userId = reactions.map(({ user }) => {
-        if (!user) {
+    fakeUploads.forEach(upload => {
+        const { users: { userId } } = upload.reactions[type];
+        if (!userId) {
             upload.reactions[type].count += 1;
+            upload.reactions[type].users.userId = true;
         } else {
             upload.reactions[type].count -= 1;
+            upload.reactions[type].users.userId = false;
         }
-        return user;
     });
 
     updatedUploads.set(id, upload);
 
     return updatedUploads;
 }
+
 export default (state = { ...INITIAL_STATE }, action) => {
     switch (action.type) {
         case REQUEST_UPLOAD_LIST: {

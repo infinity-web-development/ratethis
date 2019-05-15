@@ -22,9 +22,9 @@ const fakeUploads = [
             },
         },
         user: {
-            fakeUserId: uuid(),
             image: faker.image.avatar(),
             name: faker.name.findName(),
+            userId: uuid(),
         },
     },
     {
@@ -48,9 +48,9 @@ const fakeUploads = [
             },
         },
         user: {
-            fakeUserId: uuid(),
             image: faker.image.avatar(),
             name: faker.name.findName(),
+            userId: uuid(),
         },
     },
     {
@@ -78,9 +78,9 @@ const fakeUploads = [
             },
         },
         user: {
-            fakeUserId: uuid(),
             image: faker.image.avatar(),
             name: faker.name.findName(),
+            userId: uuid(),
         },
 
     },
