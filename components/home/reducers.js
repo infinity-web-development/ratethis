@@ -27,19 +27,16 @@ function updateUploadReaction(id, type, uploads) {
     const upload = updatedUploads.get(id);
     const userId = uuid();
 
-    uploads.forEach(() => {
-        // const { users: { userId } } = upload.reactions[type];
-        if (!userId) {
-            upload.reactions[type].users[userId] = true;
-            upload.reactions[type].count += 1;
-            console.log(upload.reactions[type].users);
+    uploads.forEach(userUpload => {
+        const { users } = userUpload.reactions[type];
+        if (Object.values(users).includes(userId[userId])) {
+            delete users.userId;
+            userUpload.reactions[type].count -= 1;
         } else {
-            upload.reactions[type].users[userId] = false;
-            upload.reactions[type].count -= 1;
-            console.log(upload.reactions[type].users);
+            users.userId = userId[userId];
+            userUpload.reactions[type].count += 1;
         }
     });
-
     updatedUploads.set(id, upload);
 
     return updatedUploads;
