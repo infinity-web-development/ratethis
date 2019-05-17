@@ -1,3 +1,5 @@
+import uuid from 'uuid/v1';
+
 import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
 import { INITIAL_STATE } from './constants';
 
@@ -23,15 +25,18 @@ function generateUploadsMap() {
 function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
     const upload = updatedUploads.get(id);
+    const userId = uuid();
 
     uploads.forEach(() => {
-        const { users: { userId } } = upload.reactions[type];
+        // const { users: { userId } } = upload.reactions[type];
         if (!userId) {
+            upload.reactions[type].users[userId] = true;
             upload.reactions[type].count += 1;
-            upload.reactions[type].users.userId = true;
+            console.log(upload.reactions[type].users);
         } else {
+            upload.reactions[type].users[userId] = false;
             upload.reactions[type].count -= 1;
-            upload.reactions[type].users.userId = false;
+            console.log(upload.reactions[type].users);
         }
     });
 

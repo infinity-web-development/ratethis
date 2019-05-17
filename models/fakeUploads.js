@@ -21,10 +21,10 @@ const fakeUploads = [
                 users: {},
             },
         },
-        user: {
+        uploader: {
+            id: uuid(),
             image: faker.image.avatar(),
             name: faker.name.findName(),
-            userId: uuid(),
         },
     },
     {
@@ -47,10 +47,10 @@ const fakeUploads = [
                 users: {},
             },
         },
-        user: {
+        uploader: {
+            id: uuid(),
             image: faker.image.avatar(),
             name: faker.name.findName(),
-            userId: uuid(),
         },
     },
     {
@@ -77,10 +77,10 @@ const fakeUploads = [
                 users: {},
             },
         },
-        user: {
+        uploader: {
+            id: uuid(),
             image: faker.image.avatar(),
             name: faker.name.findName(),
-            userId: uuid(),
         },
 
     },
