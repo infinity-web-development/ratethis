@@ -26,6 +26,7 @@ function createReactionsIcon(item, updateReaction) {
         { key: 'dislike', text: `${dislike.count}`, type: 'dislike' },
         { key: 'maybe', text: `${maybe.count}`, type: 'meh' },
     ];
+
     return icons.map(({ key, text, type }) => (
         <IconText
             onClick={() => updateReaction(item.id, key)}
@@ -80,26 +81,31 @@ class Home extends React.Component {
                 <List
                     itemLayout={VERTICAL}
                     dataSource={values}
-                    renderItem={item => (
-                        <List.Item style={USER_LIST}>
-                            <Card
-                                actions={createReactionsIcon(item, this.updateReaction)}
-                                cover={<img alt={UPLOAD} src={item.image} />}
-                                extra={<Icon type={MORE} />}
-                                hoverable
-                                title={(
-                                    <a href="/">
-                                        <Avatar src={item.image} style={AVATAR} />
-                                        {item.user}
-                                    </a>
-                            )}
-                                type={INNER}
-                                style={CARD_LIST}
-                            >
-                                {item.story}
-                            </Card>
-                        </List.Item>
-                    )}
+                    renderItem={item => {
+                        const { avatar, description, id, uploader: { image, name } } = item;
+
+                        return (
+                            <List.Item style={USER_LIST}>
+                                <Card
+                                    actions={createReactionsIcon(item, this.updateReaction)}
+                                    cover={<img alt={UPLOAD} src={image} />}
+                                    extra={<Icon type={MORE} />}
+                                    hoverable
+                                    key={id}
+                                    title={(
+                                        <a href="/">
+                                            <Avatar src={avatar} style={AVATAR} />
+                                            {name}
+                                        </a>
+                                )}
+                                    type={INNER}
+                                    style={CARD_LIST}
+                                >
+                                    {description}
+                                </Card>
+                            </List.Item>
+                        );
+                    }}
                 />
                 <List
                     itemLayout={VERTICAL}
