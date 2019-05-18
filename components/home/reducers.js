@@ -4,16 +4,6 @@ import { UPDATE_REACTION, REQUEST_UPLOAD_LIST } from './actionTypes';
 import { INITIAL_STATE } from './constants';
 
 import fakeUploads from '../../models/fakeUploads';
-<<<<<<< HEAD
-import fakeUsers from '../../models/fakeUsers';
-/**
- * Creates a Javascript Map with the user uploads mapped by id
- *
- * @param {Array} USER_UPLOADS - a users uploads
- * @return {Map} - the user uploads
- */
-=======
->>>>>>> bug/Chioma/user_uploads
 
 /**
 * Creates a Javascript Map with the user uploads mapped by id
@@ -26,31 +16,14 @@ function generateUploadsMap() {
 
     fakeUploads.forEach(upload => {
         const { id } = upload;
-<<<<<<< HEAD
-
-=======
->>>>>>> bug/Chioma/user_uploads
         uploads.set(id, upload);
     });
 
     return uploads;
 }
 
-function updateUploadReaction(_id, type, uploads) {
+function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
-<<<<<<< HEAD
-    const upload = updatedUploads.get(_id);
-
-    fakeUsers.forEach(({ id }) => {
-        if (!id) {
-            upload.reactions[type] += 1;
-        } else {
-            upload.reactions[type] -= 1;
-        }
-    });
-
-    updatedUploads.set(_id, upload);
-=======
     const upload = updatedUploads.get(id);
     const userId = uuid();
 
@@ -65,7 +38,6 @@ function updateUploadReaction(_id, type, uploads) {
         }
     });
     updatedUploads.set(id, upload);
->>>>>>> bug/Chioma/user_uploads
 
     return updatedUploads;
 }

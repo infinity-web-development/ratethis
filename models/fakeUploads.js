@@ -7,10 +7,6 @@ const fakeUploads = [
         description: faker.lorem.sentences(),
         id: uuid(),
         image: faker.image.avatar(),
-<<<<<<< HEAD
-        name: faker.name.findName(),
-=======
->>>>>>> bug/Chioma/user_uploads
         reactions: {
             dislike: {
                 count: 0,
@@ -25,14 +21,11 @@ const fakeUploads = [
                 users: {},
             },
         },
-<<<<<<< HEAD
-=======
         uploader: {
             id: uuid(),
             image: faker.image.avatar(),
             name: faker.name.findName(),
         },
->>>>>>> bug/Chioma/user_uploads
     },
     {
         avatar: faker.image.avatar(),
@@ -54,14 +47,11 @@ const fakeUploads = [
                 users: {},
             },
         },
-<<<<<<< HEAD
-=======
         uploader: {
             id: uuid(),
             image: faker.image.avatar(),
             name: faker.name.findName(),
         },
->>>>>>> bug/Chioma/user_uploads
     },
     {
         avatar: faker.image.avatar(),
@@ -87,15 +77,12 @@ const fakeUploads = [
                 users: {},
             },
         },
-<<<<<<< HEAD
-=======
         uploader: {
             id: uuid(),
             image: faker.image.avatar(),
             name: faker.name.findName(),
         },
 
->>>>>>> bug/Chioma/user_uploads
     },
 ];
 
