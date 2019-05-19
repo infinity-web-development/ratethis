@@ -5,6 +5,7 @@ import { INITIAL_STATE } from './constants';
 
 import fakeUploads from '../../models/fakeUploads';
 
+const userId = uuid();
 /**
 * Creates a Javascript Map with the user uploads mapped by id
 *
@@ -25,18 +26,19 @@ function generateUploadsMap() {
 function updateUploadReaction(id, type, uploads) {
     const updatedUploads = new Map([...uploads.entries()]);
     const upload = updatedUploads.get(id);
-    const userId = uuid();
 
     uploads.forEach(userUpload => {
         const { users } = userUpload.reactions[type];
-        if (Object.values(users).includes(userId[userId])) {
-            delete users.userId;
+
+        if (Object.keys(users).includes(userId)) {
+            delete users[userId];
             userUpload.reactions[type].count -= 1;
         } else {
-            users.userId = userId[userId];
+            users[userId] = true;
             userUpload.reactions[type].count += 1;
         }
     });
+
     updatedUploads.set(id, upload);
 
     return updatedUploads;
