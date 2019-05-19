@@ -6,4 +6,4 @@ import { NAME } from './constants';
  *
  * @type {String}
  */
-export const UPDATE_UPLOAD_LIST = `${NAME}/USER_UPUPDATE_UPLOAD_LISTLOAD_REQUEST`;
+export const UPDATE_UPLOAD_LIST = `${NAME}/UPDATE_UPLOAD_LIST`;
