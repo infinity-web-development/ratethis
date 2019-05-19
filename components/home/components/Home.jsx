@@ -37,33 +37,26 @@ function createReactionsIcon(item, updateReaction) {
     ));
 }
 
-const pollAnswers = [
+let pollAnswers = [
     { option: 'Outfit A', votes: 0 },
     { option: 'Outfit B', votes: 0 },
 ];
 
 class Home extends React.Component {
-    // Setting answers to state to reload the component with each vote
-    state = {
-        pollAnswers: [...pollAnswers],
-    }
-
     componentDidMount() {
         const { actions: { requestUploadList } } = this.props;
 
         requestUploadList();
     }
 
-    // Handling user vote
-    // Increments the votes count of answer when the user votes
     handleVote = voteAnswer => {
         const newPollAnswers = pollAnswers.map(answer => {
             if (answer.option === voteAnswer) answer.votes += 1;
+
             return answer;
         });
-        this.setState({
-            pollAnswers: newPollAnswers,
-        });
+
+        pollAnswers = newPollAnswers;
     }
 
     updateReaction = (id, reaction) => {
@@ -75,70 +68,84 @@ class Home extends React.Component {
     render() {
         const { uploads } = this.props;
         const values = [...uploads.values()];
+        const { comparisons } = values;
 
         return (
             <div style={CARD_CONTAINER}>
-                <List
-                    itemLayout={VERTICAL}
-                    dataSource={values}
-                    renderItem={item => {
-                        const { avatar, description, id, uploader: { image, name } } = item;
+                {
+                    values.includes(comparisons) ?
+                        (
+                            <List
+                                itemLayout={VERTICAL}
+                                dataSource={values}
+                                renderItem={item => {
+                                    const { avatar, description, id, uploader: { image, name } } = item;
 
-                        return (
-                            <List.Item style={USER_LIST}>
-                                <Card
-                                    actions={createReactionsIcon(item, this.updateReaction)}
-                                    cover={<img alt={UPLOAD} src={image} />}
-                                    extra={<Icon type={MORE} />}
-                                    hoverable
-                                    key={id}
-                                    title={(
-                                        <a href="/">
-                                            <Avatar src={avatar} style={AVATAR} />
-                                            {name}
-                                        </a>
-                                )}
-                                    type={INNER}
-                                    style={CARD_LIST}
-                                >
-                                    {description}
-                                </Card>
-                            </List.Item>
-                        );
-                    }}
-                />
-                <List
-                    itemLayout={VERTICAL}
-                    dataSource={values}
-                    renderItem={item => (
-                        <List.Item style={USER_LIST}>
-                            <Card
-                                // actions={<Poll answers={pollAnswers} onVote={this.handleVote} />}
-                                cover={(
-                                    <span>
-                                        <img width="50%" alt={UPLOAD} src={item.image} />
-                                        <img width="50%" alt={UPLOAD} src={item.image} />
-                                    </span>
-                                )}
-                                extra={<Icon type={MORE} />}
-                                hoverable
-                                title={(
-                                    <a href="/">
-                                        <Avatar src={item.image} style={AVATAR} />
-                                        {item.user}
-                                    </a>
-                                )}
-                                type={INNER}
-                                style={CARD_LIST}
-                            >
-                                <Meta
-                                    title={<Poll answers={pollAnswers} onVote={this.handleVote} />}
-                                    description={item.story}
-                                />
-                            </Card>
-                        </List.Item>
-                    )}
-                />
+                                    return (
+                                        <List.Item style={USER_LIST}>
+                                            <Card
+                                                cover={(
+                                                    <span>
+                                                        <img width="50%" alt={UPLOAD} src={image} />
+                                                        <img width="50%" alt={UPLOAD} src={image} />
+                                                    </span>
+                                                )}
+                                                extra={<Icon type={MORE} />}
+                                                hoverable
+                                                key={id}
+                                                title={(
+                                                    <a href="/">
+                                                        <Avatar src={avatar} style={AVATAR} />
+                                                        {name}
+                                                    </a>
+                                                )}
+                                                type={INNER}
+                                                style={CARD_LIST}
+                                            >
+                                                <Meta
+                                                    title={
+                                                        <Poll answers={pollAnswers} onVote={this.handleVote} />
+                                                    }
+                                                    description={description}
+                                                />
+                                            </Card>
+                                        </List.Item>
+                                    );
+                                }}
+                            />
+                        )
+                        :(
+                            <List
+                                itemLayout={VERTICAL}
+                                dataSource={values}
+                                renderItem={item => {
+                                    const { avatar, description, id, uploader: { image, name } } = item;
+
+                                    return (
+                                        <List.Item style={USER_LIST}>
+                                            <Card
+                                                actions={createReactionsIcon(item, this.updateReaction)}
+                                                cover={<img alt={UPLOAD} src={image} />}
+                                                extra={<Icon type={MORE} />}
+                                                hoverable
+                                                key={id}
+                                                title={(
+                                                    <a href="/">
+                                                        <Avatar src={avatar} style={AVATAR} />
+                                                        {name}
+                                                    </a>
+                                            )}
+                                                type={INNER}
+                                                style={CARD_LIST}
+                                            >
+                                                {description}
+                                            </Card>
+                                        </List.Item>
+                                    );
+                                }}
+                            />
+                        )
+                }
             </div>
         );
     }

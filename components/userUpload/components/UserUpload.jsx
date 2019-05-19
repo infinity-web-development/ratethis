@@ -17,13 +17,14 @@ export default class UserUpload extends React.Component {
 
     handleCreate = () => {
         const { form } = this.formRef.props;
+        const { uploads } = this.state;
         form.validateFields((error, { story, image }) => {
             if (error) {
                 return error;
             }
             form.resetFields();
-            const uploads = this.state.uploads.append({ image, story });
-            this.setState({ uploads });
+            const upload = uploads.append({ image, story });
+            this.setState({ upload });
         });
     }
 
@@ -32,14 +33,15 @@ export default class UserUpload extends React.Component {
     }
 
     render() {
+        const { visible } = this.state;
         return (
             <div>
                 <Icon onClick={this.showModal} type="plus" />
                 <UserUploadModal
-                  wrappedComponentRef={this.saveFormRef}
-                  visible={this.state.visible}
-                  onCancel={this.handleCancel}
-                  onCreate={this.handleCreate}
+                    wrappedComponentRef={this.saveFormRef}
+                    visible={visible}
+                    onCancel={this.handleCancel}
+                    onCreate={this.handleCreate}
                 />
             </div>
         );

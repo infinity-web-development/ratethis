@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Form, Icon, Input, Modal, Select, Upload } from 'antd';
 
-import { PLUS, UPLOAD } from '../constants';
+import { COMPARISON_OUTFITS, PLUS, SINGLE_OUTFIT, UPLOAD } from '../constants';
 
 const { Item } = Form;
 const { Option } = Select;
@@ -60,9 +61,9 @@ class UserUploadForm extends React.Component {
                         )}
                     </Item>
                     <Item>
-                        <Select placeholder="Comparison">
-                            <Option value="single">Single Outfit</Option>
-                            <Option value="double">Compare Outfit</Option>
+                        <Select defaultValue="single">
+                            <Option value="single">{SINGLE_OUTFIT}</Option>
+                            <Option value="double">{COMPARISON_OUTFITS}</Option>
                         </Select>
                     </Item>
                 </Form>
@@ -84,5 +85,12 @@ class UserUploadForm extends React.Component {
 }
 
 const UserUploadModal = Form.create()(UserUploadForm);
+
+UserUploadForm.propTypes = {
+    form: PropTypes.objectOf,
+    onCancel: PropTypes.func,
+    onCreate: PropTypes.func,
+    visible: PropTypes.bool,
+};
 
 export default UserUploadModal;
