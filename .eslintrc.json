@@ -58,7 +58,7 @@
             "ignoredNodes": ["JSXElement", "JSXElement > *", "JSXAttribute", "JSXIdentifier", "JSXNamespacedName", "JSXMemberExpression", "JSXSpreadAttribute", "JSXExpressionContainer", "JSXOpeningElement", "JSXClosingElement", "JSXText", "JSXEmptyExpression", "JSXSpreadChild"],
             "ignoreComments": false
         }],
-        "no-param-reassign": ["warn"],
+        "no-param-reassign": ["error", { "props": false }],
         "arrow-body-style": ["error", "as-needed"],
         "arrow-parens": ["warn", "as-needed", {
             "requireForBlockBody": false
