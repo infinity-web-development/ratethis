@@ -3,7 +3,6 @@ import uuid from 'uuid/v1';
 
 const fakeUploads = [
     {
-        avatar: faker.image.avatar(),
         description: faker.lorem.sentences(),
         id: uuid(),
         image: faker.image.avatar(),
@@ -28,7 +27,6 @@ const fakeUploads = [
         },
     },
     {
-        avatar: faker.image.avatar(),
         description: faker.lorem.sentences(),
         id: uuid(),
         image: faker.image.avatar(),
@@ -86,7 +84,6 @@ const fakeUploads = [
 ];
 
 fakeUploads.push({
-    avatar: faker.image.avatar(),
     comparisons: {
         0: fakeUploads[0].image,
         1: fakeUploads[1].image,

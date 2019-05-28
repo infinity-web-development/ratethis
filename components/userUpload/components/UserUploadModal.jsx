@@ -1,33 +1,37 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Form, Icon, Input, Modal, Select, Upload } from 'antd';
+import { Checkbox, Form, Icon, Input, Modal, Upload } from 'antd';
 
-import { COMPARISON_OUTFITS, PLUS, SINGLE_OUTFIT, UPLOAD } from '../constants';
+import { COMPARE_OUTFIT, PICTURE_CARD, PLACEHOLDER, PLUS, UPLOAD } from '../constants';
 
 const { Item } = Form;
-const { Option } = Select;
 
 class UserUploadForm extends React.Component {
     state = {
         fileList: [],
+        isChecked: false,
         previewImage: '',
         previewVisible: false,
     };
 
-    handleCancel = () => this.setState({ previewVisible: false })
-
-    handlePreview = file => {
+    toggleCheck = () => {
+        const { isChecked } = this.state;
         this.setState({
-            previewImage: file.url || file.thumbUrl,
-            previewVisible: true,
+            isChecked: !isChecked,
         });
     }
+
+    handleCancel = () => this.setState({ previewVisible: false })
+
+    setPreview = value => this.setState({ previewVisible: value });
+
+    handleChange = ({ fileList }) => this.setState({ fileList });
 
     render() {
         const { visible, onCancel, onCreate, form } = this.props;
         const { getFieldDecorator } = form;
-
-        const { previewVisible, previewImage, fileList } = this.state;
+        const { previewVisible, previewImage, fileList, isChecked } = this.state;
+        console.log(fileList);
         const uploadButton = (
             <div>
                 <Icon type={PLUS} />
@@ -35,12 +39,12 @@ class UserUploadForm extends React.Component {
             </div>
         );
         const props = {
-            action: '//jsonplaceholder.typicode.com/posts/',
-            listType: 'picture-card',
+            action: PLACEHOLDER,
+            listType: PICTURE_CARD,
             multiple: false,
             name: 'image',
             onChange: this.handleChange,
-            onPreview: this.handlePreview,
+            onPreview: () => this.setPreview(true),
             onRemove: this.handleRemove,
         };
 
@@ -61,20 +65,27 @@ class UserUploadForm extends React.Component {
                         )}
                     </Item>
                     <Item>
-                        <Select defaultValue="single">
-                            <Option value="single">{SINGLE_OUTFIT}</Option>
-                            <Option value="double">{COMPARISON_OUTFITS}</Option>
-                        </Select>
+                        <Checkbox onChange={this.toggleCheck}>{COMPARE_OUTFIT}</Checkbox>
                     </Item>
                 </Form>
                 <div>
-                    <Upload {...props}>
-                        {fileList.length >= 0 && uploadButton}
-                    </Upload>
+                    {
+                        isChecked ?
+                            (
+                                <Upload {...props}>
+                                    {fileList.length >= 2 ? null : uploadButton}
+                                </Upload>
+                            ) :
+                            (
+                                <Upload {...props}>
+                                    {fileList.length <= 0 && uploadButton}
+                                </Upload>
+                            )
+                    }
                     <Modal
                         visible={previewVisible}
                         footer={null}
-                        onCancel={this.handleCancel}
+                        onCancel={() => this.setPreview(false)}
                     >
                         <img alt="example" style={{ width: '100%' }} src={previewImage} />
                     </Modal>

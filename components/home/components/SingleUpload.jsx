@@ -46,7 +46,7 @@ export default class SingleUpload extends React.Component {
                         return (
                             <List.Item style={USER_LIST}>
                                 <Card
-                                    actions={createReactionsIcon(item, this.hanldeReaction)}
+                                    actions={createReactionsIcon(item)}
                                     cover={<img alt={UPLOAD} src={image} />}
                                     extra={<Icon type={MORE} />}
                                     hoverable

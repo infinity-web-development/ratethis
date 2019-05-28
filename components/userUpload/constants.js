@@ -6,7 +6,13 @@ export const PLUS = 'plus';
 export const NAME = 'user-upload';
 
 /** @constant */
-export const SINGLE_OUTFIT = 'Single outfit';
+export const CLEAR_FIX = 'clearfix';
 
 /** @constant */
-export const COMPARISON_OUTFITS = 'Comparison outfits';
+export const PICTURE_CARD = 'picture-card';
+
+/** @constant */
+export const PLACEHOLDER = 'https://www.mocky.io/v2/5cc8019d300000980a055e76';
+
+/** @constant */
+export const COMPARE_OUTFIT = 'Comparison outfits';

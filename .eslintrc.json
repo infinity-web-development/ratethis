@@ -60,6 +60,7 @@
             "ignoreComments": false
         }],
         "no-param-reassign": ["error", { "props": false }],
+        "operator-linebreak": [2, "after", { "overrides": { "?": "ignore", ":": "ignore"} }],
         "arrow-body-style": ["error", "as-needed"],
         "arrow-parens": ["warn", "as-needed", {
             "requireForBlockBody": false
