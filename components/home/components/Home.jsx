@@ -1,39 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Avatar, Card, Icon, List } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { LIST_TEXTS, STYLES } from '../constants';
+import SingleUpload from './SingleUpload';
+import ComparisonUpload from './ComparisonUpload';
+import { STYLES } from '../constants';
 import * as actions from '../actions';
 import { getUploads } from '../selectors';
 
-const { AVATAR, CARD_CONTAINER, CARD_LIST, ICON, USER_LIST } = STYLES;
-const { INNER, MORE, UPLOAD, VERTICAL } = LIST_TEXTS;
-
-const IconText = ({ type, text, onClick }) => (
-    <span>
-        <Icon type={type} style={ICON} onClick={onClick} />
-        {text}
-    </span>
-);
-function createReactionsIcon(item, updateReaction) {
-    const { like, dislike, maybe } = item.reactions;
-    const icons = [
-        { key: 'like', text: `${like.count}`, type: 'heart' },
-        { key: 'dislike', text: `${dislike.count}`, type: 'dislike' },
-        { key: 'maybe', text: `${maybe.count}`, type: 'meh' },
-    ];
-
-    return icons.map(({ key, text, type }) => (
-        <IconText
-            onClick={() => updateReaction(item.id, key)}
-            key={key}
-            type={type}
-            text={text}
-        />
-    ));
-}
+const { CARD_CONTAINER } = STYLES;
 
 class Home extends React.Component {
     componentDidMount() {
@@ -50,39 +26,14 @@ class Home extends React.Component {
 
     render() {
         const { uploads } = this.props;
-        const values = [...uploads.values()];
 
         return (
             <div style={CARD_CONTAINER}>
-                <List
-                    itemLayout={VERTICAL}
-                    dataSource={values}
-                    renderItem={item => {
-                        const { avatar, description, id, uploader: { image, name } } = item;
-
-                        return (
-                            <List.Item style={USER_LIST}>
-                                <Card
-                                    actions={createReactionsIcon(item, this.updateReaction)}
-                                    cover={<img alt={UPLOAD} src={image} />}
-                                    extra={<Icon type={MORE} />}
-                                    hoverable
-                                    key={id}
-                                    title={(
-                                        <a href="/">
-                                            <Avatar src={avatar} style={AVATAR} />
-                                            {name}
-                                        </a>
-                                )}
-                                    type={INNER}
-                                    style={CARD_LIST}
-                                >
-                                    {description}
-                                </Card>
-                            </List.Item>
-                        );
-                    }}
+                <SingleUpload
+                    values={[...uploads.values()]}
+                    hanldeReaction={this.updateReaction}
                 />
+                <ComparisonUpload values={[...uploads.values()]} />
             </div>
         );
     }
@@ -91,12 +42,6 @@ class Home extends React.Component {
 Home.propTypes = {
     actions: PropTypes.objectOf(PropTypes.object),
     uploads: PropTypes.instanceOf(Map),
-};
-
-IconText.propTypes = {
-    onClick: PropTypes.func,
-    text: PropTypes.string,
-    type: PropTypes.string,
 };
 
 const mapStateToProps = state => ({

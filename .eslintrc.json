@@ -21,6 +21,7 @@
     "rules": {
         "semi": ["error", "always"],
         "camelcase": ["error", { "properties": "never" }],
+        "consistent-return": ["error", { "treatUndefinedAsUnspecified": true }],
         "constructor-super": "error",
         "comma-dangle": ["error", {
             "arrays": "always-multiline",
@@ -59,6 +60,7 @@
             "ignoreComments": false
         }],
         "no-param-reassign": ["error", { "props": false }],
+        "operator-linebreak": [2, "after", { "overrides": { "?": "ignore", ":": "ignore"} }],
         "arrow-body-style": ["error", "as-needed"],
         "arrow-parens": ["warn", "as-needed", {
             "requireForBlockBody": false
