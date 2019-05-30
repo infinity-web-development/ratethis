@@ -1,7 +1,8 @@
-const withImages = require('next-images');
+const withCss = require('@zeit/next-css');
 
-module.exports = withImages({
-    webpack(config, options) {
-        return config;
-    },
-});
+// fix: prevents error when .css files are required by node
+if (typeof require !== 'undefined') {
+    require.extensions['.css'] = () => {};
+}
+
+module.exports = withCss();
