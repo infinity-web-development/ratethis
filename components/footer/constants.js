@@ -2,23 +2,9 @@ export const MENU_TEXTS = {
     DARK: 'dark',
     HORIZONTAL: 'horizontal',
 };
+export const MAIN_NAV = 'main-nav';
 
-export const STYLES = {
-    CONTAINER: {
-        bottom: 0,
-        display: 'flex',
-        height: '50px',
-        position: 'fixed',
-        width: '100%',
-    },
-
-    MAIN_NAV: {
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'space-around',
-        width: '100%',
-    },
-};
+export const CONTAINER = 'container';
 
 export const FOOTER_MENU = [
     {

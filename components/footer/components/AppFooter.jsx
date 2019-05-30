@@ -2,21 +2,20 @@ import React from 'react';
 import { Icon, Menu } from 'antd';
 import Link from 'next/link';
 
-import { FOOTER_MENU, MENU_TEXTS, STYLES } from './constants';
+import { CONTAINER, FOOTER_MENU, MAIN_NAV, MENU_TEXTS } from '../constants';
 
-const { CONTAINER, MAIN_NAV } = STYLES;
 const { DARK, HORIZONTAL } = MENU_TEXTS;
 
 const { Item } = Menu;
 
-class AppFooter extends React.Component {
+export default class AppFooter extends React.Component {
     render() {
         return (
-            <div style={CONTAINER}>
+            <div className={CONTAINER}>
                 <Menu
                     mode={HORIZONTAL}
                     theme={DARK}
-                    style={MAIN_NAV}
+                    className={MAIN_NAV}
                 >
                     {
                         FOOTER_MENU.map(({ key, path, type }) => (
@@ -32,5 +31,3 @@ class AppFooter extends React.Component {
         );
     }
 }
-
-export default AppFooter;

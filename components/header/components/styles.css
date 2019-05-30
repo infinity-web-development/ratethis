@@ -1,0 +1,14 @@
+.header-container {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+.header-menu {
+    position: fixed;
+        width: '100%',
+}
+.header-avatar {
+    background-color: white;
+    height: 64px;
+    width: 150px;
+}
