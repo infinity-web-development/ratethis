@@ -11,6 +11,8 @@ app.prepare()
     .then(() => {
         const server = express();
 
+        server.use(bodyParser.json());
+
         server.get('*', (req, res) => handle(req, res));
 
         server.listen(PORT, err => {
