@@ -1,29 +1,32 @@
-
-export const STYLES = {
-    HEADER_CONTAINER: {
-        position: 'fixed',
-        width: '100%',
-        zIndex: '1',
-    },
-    HEADER_MENU: {
-        position: 'fixed',
-        width: '100%',
-    },
-    LOGO_IMG: {
-        backgroundColor: 'white',
-        height: '64px',
-        width: '150px',
-    },
-};
-
+/** @constant */
 export const LOGO = 'logo';
 
+/** @constant */
 export const HORIZONTAL = 'horizontal';
 
+/** @constant */
 export const SIGN_IN = 'Sign In';
 
+/** @constant */
 export const HOME = 'Home';
 
+/** @constant */
 export const DARK = 'dark';
 
+/** @constant */
 export const KEY = ['2'];
+
+/** @constant */
+
+export const HEADER_STYLING = {
+    HEADER_CONTAINER: 'header-container',
+    HEADER_MENU: 'header-menu',
+};
+
+export const LOGO_IMG = {
+    AVATAR: 'header-avatar',
+    SHAPE: 'square',
+    SIZE: 'large',
+    SOURCE: '/Logo.png',
+};
+

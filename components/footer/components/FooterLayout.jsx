@@ -3,7 +3,7 @@ import React from 'react';
 
 import AppFooter from './AppFooter';
 
-class AppFooterLayout extends React.Component {
+class FooterLayout extends React.Component {
     render() {
         const { children } = this.props;
 
@@ -16,10 +16,10 @@ class AppFooterLayout extends React.Component {
     }
 }
 
-AppFooterLayout.propTypes = {
+FooterLayout.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node,
     ]),
 };
-export default AppFooterLayout;
+export default FooterLayout;

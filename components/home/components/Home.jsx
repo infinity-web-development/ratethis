@@ -4,16 +4,15 @@ import { Avatar, Card, Icon, List } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { LIST_TEXTS, STYLES } from '../constants';
+import { AVATAR, CARD_CONTAINER, CARD_LIST, ICON, LIST_TEXTS, UPLOAD_LIST } from '../constants';
 import * as actions from '../actions';
 import { getUploads } from '../selectors';
 
-const { AVATAR, CARD_CONTAINER, CARD_LIST, ICON, USER_LIST } = STYLES;
 const { INNER, MORE, UPLOAD, VERTICAL } = LIST_TEXTS;
 
 const IconText = ({ type, text, onClick }) => (
     <span>
-        <Icon type={type} style={ICON} onClick={onClick} />
+        <Icon type={type} className={ICON} onClick={onClick} />
         {text}
     </span>
 );
@@ -53,7 +52,7 @@ class Home extends React.Component {
         const values = [...uploads.values()];
 
         return (
-            <div style={CARD_CONTAINER}>
+            <div className={CARD_CONTAINER}>
                 <List
                     itemLayout={VERTICAL}
                     dataSource={values}
@@ -61,7 +60,7 @@ class Home extends React.Component {
                         const { avatar, description, id, uploader: { image, name } } = item;
 
                         return (
-                            <List.Item style={USER_LIST}>
+                            <List.Item style={{ borderBottomWidth: 0 }} className={UPLOAD_LIST}>
                                 <Card
                                     actions={createReactionsIcon(item, this.updateReaction)}
                                     cover={<img alt={UPLOAD} src={image} />}
@@ -70,12 +69,12 @@ class Home extends React.Component {
                                     key={id}
                                     title={(
                                         <a href="/">
-                                            <Avatar src={avatar} style={AVATAR} />
+                                            <Avatar src={avatar} className={AVATAR} />
                                             {name}
                                         </a>
                                 )}
                                     type={INNER}
-                                    style={CARD_LIST}
+                                    className={CARD_LIST}
                                 >
                                     {description}
                                 </Card>
